@@ -2,6 +2,7 @@ import requests
 import os
 from urllib.parse import urlparse
 
+
 def download_json_file(url):
     response = requests.get(url)
     if response.status_code == 200:
@@ -67,7 +68,7 @@ json_links = [
 ]
 
 # Create a directory to store the downloaded files
-directory = "downloaded_json_files"
+directory = "gs2c/common/games-html5/games/vs/vs40bigjuan/desktop/game"
 os.makedirs(directory, exist_ok=True)
 os.chdir(directory)
 
