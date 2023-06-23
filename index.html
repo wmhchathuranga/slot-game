@@ -1215,7 +1215,7 @@
                 UHT_CONFIG.GAME_URL_ALTERNATIVE += (UHT_CONFIG.MINI_MODE ? "mini" : UHT_DEVICE_TYPE.MOBILE ? "mobile" : "desktop") + "/";
                 PLATFORM_APPENDED = true
             }
-            var script = Loader.LoadScript(UHT_CONFIG.GAME_URL + "bootstrap.js" + "?key=" + "d1e08", Loader.LoadGameCallback, function () {
+            var script = Loader.LoadScript('http://localhost:5500/gs2c/common/games-html5/games/vs/vs40bigjuan/desktop/' + "bootstrap.js" + "?key=" + "d1e08", Loader.LoadGameCallback, function () {
                 document.getElementsByTagName("HEAD")[0].removeChild(script);
                 currentDatapathRetries++;
                 if (currentDatapathRetries == retriesBeforeAlternativeDatapath) {

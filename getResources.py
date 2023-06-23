@@ -22,7 +22,7 @@ def download_json_file(url):
 # List of JSON file links
 json_links = [
     "https://common-static.pragmaticplay.net/gs2c/common/games-html5/games/vs/vs40bigjuan/desktop/build.js?key=d1e08",
-    # "https://common-static.pragmaticplay.net/gs2c/common/games-html5/games/vs/vs40bigjuan/desktop/client/game.json?key=d1e08",
+    "https://common-static.pragmaticplay.net/gs2c/common/games-html5/games/vs/vs40bigjuan/desktop/bootstrap.js?key=d1e08",
     # "https://common-static.pragmaticplay.net/gs2c/common/games-html5/games/vs/vs40bigjuan/desktop/client/resources.json?key=d1e08",
 
 
