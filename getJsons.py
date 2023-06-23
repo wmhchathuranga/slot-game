@@ -8,12 +8,11 @@ def download_json_file(url):
     if response.status_code == 200:
         # Extract the filename from the URL
         parsed_url = urlparse(url)
-        path = parsed_url.path
-        filename = os.path.basename(parsed_url.path)
+        path = "D:\\BlockStars\\5 Lions\\"+parsed_url.path
         directory = os.path.dirname(path)
         os.makedirs(directory, exist_ok=True)
         # Save the file with the desired name
-        with open(filename, 'wb') as file:
+        with open(path, 'wb') as file:
             file.write(response.content)
         print(f"Downloaded: {path}")
     else:
@@ -278,9 +277,7 @@ json_links = [
 ]
 
 # Create a directory to store the downloaded files
-directory = "/"
-os.makedirs(directory, exist_ok=True)
-os.chdir(directory)
+
 
 # Download each JSON file
 for link in json_links:
