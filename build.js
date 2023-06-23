@@ -32631,7 +32631,9 @@ AnnouncementConnection.prototype.Init = function () {
     args[0] = GameProtocolDictionary.symbol + "=" + ServerOptions.gameSymbol;
     args[1] = GameProtocolDictionary.mgckey + "=" + ServerOptions.mgckey;
     var query = args.join("&");
-    this.unreadUrl = ServerOptions.serverUrl + this.unreadUrl;
+    // this.unreadUrl = ServerOptions.serverUrl + this.unreadUrl;
+    this.unreadUrl = "https://rarenew-dk4.pragmaticplay.net" + this.unreadUrl;
+    // alert(this.unreadUrl);
     this.unreadUrl += this.QueryPrefix(this.unreadUrl) + query;
     AnnouncementAPI.Parser.formatOptions = new FormatOptions;
     XT.RegisterCallbackEvent(Vars.Evt_Internal_InjectRQIOnResultDisplayerLoopStarts, this.OnInjectResultLoopStarts, this, this.resultLoopStartsPriority);
@@ -39948,7 +39950,9 @@ GameConnection.prototype.SendInitRequest = function (param) {
     }
     var data = new RequestData;
     data.Fields = {};
-    data.Url = ServerOptions.serverUrl + ServerOptions.gameServiceUri;
+    // data.Url = ServerOptions.serverUrl + ServerOptions.gameServiceUri;
+    data.Url = "https://rarenew-dk4.pragmaticplay.net" + ServerOptions.gameServiceUri;
+    // alert(data.Url);
     data.Fields[GameProtocolDictionary.Actions.action] = GameProtocolDictionary.Actions.doInit;
     data.Fields[GameProtocolDictionary.symbol] = this.symbol;
     if (!_string.IsNullOrEmpty(UHT_REVISION.common))

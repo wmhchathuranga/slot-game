@@ -177,7 +177,6 @@ var UHTEventBroker = function () {
 
     function loadScriptsOneByOne() {
         var script = UHT_SCRIPTS.shift();
-        // if (script != undefined) loadScript('http://localhost:5500/build.js?key=d1e08');
         if (script != undefined) loadScript(script);
         else onScriptsLoaded()
     }
