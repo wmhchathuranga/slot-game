@@ -26,7 +26,7 @@ var UHT_PACKAGES_INFO = null;
 var UHT_CURRENCY_PATCH = null;
 var UHT_RESOURCES = null;
 var UHT_PACKAGES_INFO_OBJ = null;
-var UHTEventBroker = function () {
+var UHTEventBroker = function() {
     var defaultConfig = {
         "WEB_LOBBY": "/gs2c/mobile/lobby.do",
         "SETTINGS": "/gs2c/saveSettings.do",
@@ -157,18 +157,18 @@ var UHTEventBroker = function () {
         var head = document.getElementsByTagName("HEAD")[0];
         var script = document.createElement("script");
         script.src = UHT_CONFIG.GAME_URL + url + "?key=" + UHT_REVISION.uncommon;
-        script.onload = function () {
+        script.onload = function() {
             loadScriptsOneByOne()
         }
-            ;
-        script.onerror = function () {
+        ;
+        script.onerror = function() {
             head.removeChild(script);
-            setTimeout(function () {
+            setTimeout(function() {
                 UHT_SCRIPTS.unshift(url);
                 loadScriptsOneByOne()
             }, 250)
         }
-            ;
+        ;
         head.appendChild(script)
     }
     function loadScriptsOneByOne() {
@@ -184,18 +184,18 @@ var UHTEventBroker = function () {
         link.href = UHT_CONFIG.GAME_URL + url + "?key=" + UHT_REVISION.uncommon;
         link.type = "text/css";
         link.rel = "stylesheet";
-        link.onload = function () {
+        link.onload = function() {
             loadStyles()
         }
-            ;
-        link.onerror = function () {
+        ;
+        link.onerror = function() {
             head.removeChild(link);
-            setTimeout(function () {
+            setTimeout(function() {
                 UHT_STYLES.unshift(url);
                 loadStyles()
             }, 250)
         }
-            ;
+        ;
         head.appendChild(link)
     }
     function loadStyles() {
@@ -230,17 +230,17 @@ var UHTEventBroker = function () {
         var msg = params["common"];
         var args = params["args"];
         switch (msg) {
-            case "EVT_GET_CONFIGURATION":
-                sendToGameInternal("EVT_GET_CONFIGURATION", {
-                    "config": gameConfig
-                });
-                return;
-            case "EVT_RELOAD":
-                location.reload();
-                return;
-            default:
-                if (isOnline)
-                    sendToAdapterOriginal(json)
+        case "EVT_GET_CONFIGURATION":
+            sendToGameInternal("EVT_GET_CONFIGURATION", {
+                "config": gameConfig
+            });
+            return;
+        case "EVT_RELOAD":
+            location.reload();
+            return;
+        default:
+            if (isOnline)
+                sendToAdapterOriginal(json)
         }
     }
     function sendToGame(json) {
@@ -251,32 +251,32 @@ var UHTEventBroker = function () {
         var msg = params["common"];
         var args = params["args"];
         switch (msg) {
-            case "EVT_GET_CONFIGURATION":
-                if (typeof args["config"] == "string")
-                    args["config"] = parseJson(args["config"]);
-                parseOnlineConfig(args["config"]);
-                var config = UHT_GAME_CONFIG_SRC;
-                var contextPath = "/ReplayService";
-                if (config["replaySystemContextPath"] != undefined)
-                    contextPath = config["replaySystemContextPath"];
-                if (config["replayMode"] == true) {
-                    var url = config["replaySystemUrl"] + contextPath + "/api/replay/data?token=" + config["mgckey"] + "&roundID=" + config["replayRoundId"] + "&envID=" + config["environmentId"];
-                    var xhr = new XMLHttpRequest;
-                    var _loadgame = loadGame;
-                    xhr.onreadystatechange = function (event) {
-                        var xhr = event.target;
-                        if (xhr.readyState == 4)
-                            if (xhr.status == 200) {
-                                window["UHT_REPLAY_DATA"] = xhr.responseText;
-                                _loadgame()
-                            }
-                    }
-                        ;
-                    xhr.open("GET", url, true);
-                    xhr.send(null)
-                } else
-                    loadGame();
-                return
+        case "EVT_GET_CONFIGURATION":
+            if (typeof args["config"] == "string")
+                args["config"] = parseJson(args["config"]);
+            parseOnlineConfig(args["config"]);
+            var config = UHT_GAME_CONFIG_SRC;
+            var contextPath = "/ReplayService";
+            if (config["replaySystemContextPath"] != undefined)
+                contextPath = config["replaySystemContextPath"];
+            if (config["replayMode"] == true) {
+                var url = config["replaySystemUrl"] + contextPath + "/api/replay/data?token=" + config["mgckey"] + "&roundID=" + config["replayRoundId"] + "&envID=" + config["environmentId"];
+                var xhr = new XMLHttpRequest;
+                var _loadgame = loadGame;
+                xhr.onreadystatechange = function(event) {
+                    var xhr = event.target;
+                    if (xhr.readyState == 4)
+                        if (xhr.status == 200) {
+                            window["UHT_REPLAY_DATA"] = xhr.responseText;
+                            _loadgame()
+                        }
+                }
+                ;
+                xhr.open("GET", url, true);
+                xhr.send(null)
+            } else
+                loadGame();
+            return
         }
         messagesToGame.push(json);
         sendMessagesToGame()
@@ -308,7 +308,7 @@ var UHTEventBroker = function () {
         UHTConsole.AllowToWrite(UHT_LOCAL);
         try {
             sendToAdapterOriginal = window.parent["sendToAdapter"] || null
-        } catch (e) { }
+        } catch (e) {}
         if (sendToAdapterOriginal == null)
             sendToAdapterOriginal = window["sendToAdapter"] || null;
         isOnline = sendToAdapterOriginal != null;
@@ -327,53 +327,53 @@ var UHTEventBroker = function () {
         }
     }
     var EM = {};
-    EM.Handler = function (object, callback) {
+    EM.Handler = function(object, callback) {
         this.object = object;
         this.callback = callback
     }
-        ;
-    EM.Handler.prototype.equals = function (object, callback) {
+    ;
+    EM.Handler.prototype.equals = function(object, callback) {
         return object == this.object && callback == this.callback
     }
-        ;
-    EM.Handler.prototype.call = function () {
+    ;
+    EM.Handler.prototype.call = function() {
         this.callback.apply(this.object, arguments)
     }
-        ;
+    ;
     EM.Type = {
         Game: "sendToGame",
         Adapter: "sendToAdapter",
         Wrapper: "unityToWrapperMsg"
     };
-    EM.AddHandler = function (target, handler) {
+    EM.AddHandler = function(target, handler) {
         if (eventHandlers[target] == undefined)
             eventHandlers[target] = [];
         eventHandlers[target].push(handler)
     }
-        ;
-    EM.Trigger = function (target, param) {
+    ;
+    EM.Trigger = function(target, param) {
         switch (target) {
-            case EM.Type.Game:
-                sendToGame(param);
-                break;
-            case EM.Type.Adapter:
-                sendToAdapter(param);
-                triggerEvent(target, param);
-                break;
-            case EM.Type.Wrapper:
-                triggerEvent(target, param);
-                break
+        case EM.Type.Game:
+            sendToGame(param);
+            break;
+        case EM.Type.Adapter:
+            sendToAdapter(param);
+            triggerEvent(target, param);
+            break;
+        case EM.Type.Wrapper:
+            triggerEvent(target, param);
+            break
         }
     }
-        ;
+    ;
     window.onload = onLoad;
     return EM
 }();
 function UHTReplace(str) {
-    return String(str).replace(new RegExp("###APOS###", "g"), "'")
+    return String(str).replace(new RegExp("###APOS###","g"), "'")
 }
 function UHTVarsInjected() {
-    var ProcessGameInfo = function () {
+    var ProcessGameInfo = function() {
         var items = [];
         items = items.concat(String(UHT_GUI_SIZE).split(","));
         items = items.concat(String(UHT_GUI_RESOURCES_SIZE).split(","));
@@ -381,7 +381,7 @@ function UHTVarsInjected() {
         items = items.concat(String(UHT_RESOURCES_SIZE).split(","));
         items = items.concat(String(UHT_OTHER_SIZE).split(","));
         items = items.concat(String(UHT_MODULES_SIZES).split(","));
-        items = items.filter(function (x) {
+        items = items.filter(function(x) {
             return x !== ""
         });
         var files = [];
@@ -401,25 +401,25 @@ function UHTVarsInjected() {
         UHT_GAME_SIZE = sizeTotal
     };
     ProcessGameInfo();
-    var PackageLoader = function (url, callback, useNotFoundCounter) {
+    var PackageLoader = function(url, callback, useNotFoundCounter) {
         this.url = url + "?key=" + UHT_REVISION.uncommon;
         this.callback = callback;
         this.notFoundCounter = 0;
         this.useNotFoundCounter = useNotFoundCounter;
         this.SendRequest()
     };
-    PackageLoader.prototype.SendRequest = function () {
+    PackageLoader.prototype.SendRequest = function() {
         var self = this;
         var xhr = new XMLHttpRequest;
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
             PackageLoader.prototype.OnReadyStateChanged.apply(self, arguments)
         }
-            ;
+        ;
         xhr.open("GET", this.url, true);
         xhr.send(null)
     }
-        ;
-    PackageLoader.prototype.OnReadyStateChanged = function (event) {
+    ;
+    PackageLoader.prototype.OnReadyStateChanged = function(event) {
         var xhr = event.target;
         if (xhr.readyState == 4)
             if (xhr.status == 200)
@@ -433,19 +433,19 @@ function UHTVarsInjected() {
                     }
                 }
                 var self = this;
-                setTimeout(function () {
+                setTimeout(function() {
                     PackageLoader.prototype.SendRequest.call(self)
                 }, 250)
             }
     }
-        ;
+    ;
     var packagesInfo = JSON.parse(String(UHT_PACKAGES_INFO));
     var numL10nFilesToLoad = 0;
     var numL10nLoadedFiles = 0;
     var customizationLoaded = false;
     var loadedFiles = [];
     var loadedCustomizationFiles = [];
-    var SetUHTResources = function () {
+    var SetUHTResources = function() {
         if (!(customizationLoaded && numL10nLoadedFiles == numL10nFilesToLoad))
             return;
         UHT_PACKAGES_INFO_OBJ = packagesInfo;
@@ -454,14 +454,14 @@ function UHTVarsInjected() {
             LOCALIZATIONS: loadedFiles.length == numL10nFilesToLoad ? loadedFiles.concat(loadedCustomizationFiles) : loadedCustomizationFiles
         }
     };
-    var LoadL10nCallback = function (responseText) {
+    var LoadL10nCallback = function(responseText) {
         if (responseText != null)
             loadedFiles.push(responseText);
         ++numL10nLoadedFiles;
         if (numL10nLoadedFiles == numL10nFilesToLoad)
             SetUHTResources()
     };
-    var GetL10nFiles = function () {
+    var GetL10nFiles = function() {
         var languages = packagesInfo["languages"];
         var path = UHT_CONFIG.GAME_URL + "packages/";
         var suffix = (UHT_CONFIG.MINI_MODE ? "_mini" : UHT_DEVICE_TYPE.MOBILE ? "_mobile" : "_desktop") + ".json";
@@ -481,19 +481,19 @@ function UHTVarsInjected() {
         }
         return filesToLoad
     };
-    var LoadL10ns = function () {
+    var LoadL10ns = function() {
         var filesToLoad = GetL10nFiles();
         numL10nFilesToLoad = filesToLoad.length;
         if (numL10nFilesToLoad == 0)
             SetUHTResources();
         else
             while (filesToLoad.length > 0)
-                new PackageLoader(filesToLoad.shift(), LoadL10nCallback, true)
+                new PackageLoader(filesToLoad.shift(),LoadL10nCallback,true)
     };
-    var LoadCustomizationsInfo = function () {
-        new PackageLoader(UHT_CONFIG.GAME_URL + "customizations.info", OnCustomizationsInfoLoaded, false)
+    var LoadCustomizationsInfo = function() {
+        new PackageLoader(UHT_CONFIG.GAME_URL + "customizations.info",OnCustomizationsInfoLoaded,false)
     };
-    var OnCustomizationsInfoLoaded = function (responseText) {
+    var OnCustomizationsInfoLoaded = function(responseText) {
         if (responseText != null) {
             responseText = String(responseText).replace(/^\s+|\s+$/g, "");
             if (responseText != "") {
@@ -508,9 +508,9 @@ function UHTVarsInjected() {
         customizationLoaded = true;
         SetUHTResources()
     };
-    var LoadCustomization = function (customizations) {
+    var LoadCustomization = function(customizations) {
         if (UHT_GAME_CONFIG == null) {
-            setTimeout(function () {
+            setTimeout(function() {
                 LoadCustomization(customizations)
             }, 250);
             return
@@ -519,14 +519,14 @@ function UHTVarsInjected() {
             var stylename = UHT_GAME_CONFIG["STYLENAME"];
             if (customizations[i]["stylenames"].indexOf(stylename) > -1) {
                 console.info("Found customization for stylename " + stylename);
-                new PackageLoader(UHT_CONFIG.GAME_URL + "customizations/" + customizations[i]["name"] + ".json", OnCustomizationLoaded, false);
+                new PackageLoader(UHT_CONFIG.GAME_URL + "customizations/" + customizations[i]["name"] + ".json",OnCustomizationLoaded,false);
                 return
             }
         }
         customizationLoaded = true;
         SetUHTResources()
     };
-    var OnCustomizationLoaded = function (responseText) {
+    var OnCustomizationLoaded = function(responseText) {
         if (responseText != null)
             loadedCustomizationFiles.push(responseText);
         customizationLoaded = true;
@@ -535,7 +535,7 @@ function UHTVarsInjected() {
     LoadL10ns();
     LoadCustomizationsInfo()
 }
-; UHT_LOCAL = false;
+;UHT_LOCAL = false;
 UHT_ONLINE = true;
 UHT_DEBUG = false;
 UHT_SCRIPTS = ['build.js'];

@@ -2,9 +2,8 @@
 <html>
 
 <head>
-    <title>Big Juan</title>
+    <title>5 Lions Gold</title>
     <meta name="google" content="nopagereadaloud" />
-
     <title>UHT</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui">
@@ -73,7 +72,7 @@
             background-size: 3% auto
         }
 
-        @media all and (orientation:portrait) {
+        @media all and (orientation: portrait) {
 
             #Mobile #wheelofpatience,
             #Mobile .logotype-wheel {
@@ -81,7 +80,7 @@
             }
         }
 
-        @media all and (orientation:landscape) {
+        @media all and (orientation: landscape) {
 
             #Mobile #wheelofpatience,
             #Mobile .logotype-wheel {
@@ -195,12 +194,12 @@
     <script>
         if (window.location.href.indexOf("replayGame.do") != -1)
             document.title = "Pragmatic Replay";
-        var gaQueue = [],
-            ga = function () {
+        var gaQueue = []
+            , ga = function () {
                 gaQueue.push(arguments)
             };
-        var ga4Queue = [],
-            gtag = function () {
+        var ga4Queue = []
+            , gtag = function () {
                 ga4Queue.push(arguments)
             };
 
@@ -230,7 +229,8 @@
             ga('BehaviourTracker.send', 'event', "uht_errors", msg, URLGameSymbol, 1);
 
             window.onerror = null;
-        };
+        }
+            ;
 
         window.onbeforeunload = function () {
             var step = LoadingStep.toString() + (LoadingStep + 1).toString();
@@ -245,9 +245,8 @@
 
             if (LoadingStep > 1)
                 globalTracking.StopTimerAndSend("uht_loading", "_CLOSED_at_" + lastStep, "LoadingTracker");
-            else
-                if (GA_timer_load_start != undefined)
-                    ga('LoadingTracker.send', 'timer', "uht_loading", "_CLOSED_at_1", URLGameSymbol, new Date().getTime() - GA_timer_load_start);
+            else if (GA_timer_load_start != undefined)
+                ga('LoadingTracker.send', 'timer', "uht_loading", "_CLOSED_at_1", URLGameSymbol, new Date().getTime() - GA_timer_load_start);
 
             UHT_SEND_ERRORS = false;
 
@@ -261,7 +260,6 @@
             return;
         }
 
-
         var game_symbol_from_url = (function () {
             var params = [];
             var urlSplitted = location.href.split("?");
@@ -273,7 +271,8 @@
                 }
             }
             return params["symbol"];
-        })();
+        }
+        )();
 
         var game_symbol_from_url_value = game_symbol_from_url;
 
@@ -281,7 +280,6 @@
             URLGameSymbol = game_symbol_from_url_value;
 
         var gaMapping = {};
-
         function ga4_init(ua_id, ua_params, ga4_id) {
             ga('create', ua_id, ua_params);
             var sampleRate = ua_params.sampleRate;
@@ -329,7 +327,6 @@
             'value': 1
         });
 
-
         function sendGAQueued() {
             var item = gaQueue.shift();
             if (item != undefined)
@@ -339,76 +336,79 @@
                 setTimeout(sendGAQueued, 1500);
         }
 
-        ! function (r, d) {
+        !function (r, d) {
             function i(i) {
-                for (var e = {}, o = 0; o < i.length; o++) e[i[o].toUpperCase()] = i[o];
+                for (var e = {}, o = 0; o < i.length; o++)
+                    e[i[o].toUpperCase()] = i[o];
                 return e
             }
-
             function n(i, e) {
                 return typeof i == w && -1 !== I(e).indexOf(I(i))
             }
-
             function t(i, e) {
-                if (typeof i == w) return i = i.replace(/^\s\s*/, "").replace(/\s\s*$/, ""), typeof e == b ? i : i.substring(0, 255)
+                if (typeof i == w)
+                    return i = i.replace(/^\s\s*/, "").replace(/\s\s*$/, ""),
+                        typeof e == b ? i : i.substring(0, 255)
             }
-
             function s(i, e) {
                 for (var o, a, r, n, t, s = 0; s < e.length && !n;) {
                     for (var b = e[s], w = e[s + 1], l = o = 0; l < b.length && !n;)
                         if (n = b[l++].exec(i))
-                            for (a = 0; a < w.length; a++) t = n[++o], typeof (r = w[a]) == c && 0 < r.length ? 2 === r.length ? typeof r[1] == u ? this[r[0]] = r[1].call(this,
-                                t) : this[r[0]] = r[1] : 3 === r.length ? typeof r[1] != u || r[1].exec && r[1].test ? this[r[0]] = t ? t.replace(r[1], r[2]) : d : this[r[0]] = t ? r[1].call(this, t, r[2]) : d : 4 === r.length && (this[r[0]] = t ? r[3].call(this, t.replace(r[1], r[2])) : d) : this[r] = t || d;
+                            for (a = 0; a < w.length; a++)
+                                t = n[++o],
+                                    typeof (r = w[a]) == c && 0 < r.length ? 2 === r.length ? typeof r[1] == u ? this[r[0]] = r[1].call(this, t) : this[r[0]] = r[1] : 3 === r.length ? typeof r[1] != u || r[1].exec && r[1].test ? this[r[0]] = t ? t.replace(r[1], r[2]) : d : this[r[0]] = t ? r[1].call(this, t, r[2]) : d : 4 === r.length && (this[r[0]] = t ? r[3].call(this, t.replace(r[1], r[2])) : d) : this[r] = t || d;
                     s += 2
                 }
             }
-
             function e(i, e) {
                 for (var o in e)
                     if (typeof e[o] == c && 0 < e[o].length)
                         for (var a = 0; a < e[o].length; a++) {
-                            if (n(e[o][a], i)) return "?" === o ? d : o
-                        } else if (n(e[o], i)) return "?" === o ? d : o;
+                            if (n(e[o][a], i))
+                                return "?" === o ? d : o
+                        }
+                    else if (n(e[o], i))
+                        return "?" === o ? d : o;
                 return i
             }
-            var u = "function",
-                b = "undefined",
-                c = "object",
-                w = "string",
-                l = "model",
-                p = "name",
-                m = "type",
-                f = "vendor",
-                h = "version",
-                g = "architecture",
-                o = "console",
-                a = "mobile",
-                v = "tablet",
-                x = "smarttv",
-                k = "wearable",
-                y = "embedded",
-                _ = "Amazon",
-                S = "Apple",
-                T = "ASUS",
-                q = "BlackBerry",
-                z = "Browser",
-                N = "Chrome",
-                A = "Firefox",
-                C = "Google",
-                E = "Huawei",
-                O = "LG",
-                U = "Microsoft",
-                j = "Motorola",
-                R = "Opera",
-                M = "Samsung",
-                P = "Sony",
-                V = "Xiaomi",
-                B = "Zebra",
-                D = "Facebook",
-                I = function (i) {
+            var u = "function"
+                , b = "undefined"
+                , c = "object"
+                , w = "string"
+                , l = "model"
+                , p = "name"
+                , m = "type"
+                , f = "vendor"
+                , h = "version"
+                , g = "architecture"
+                , o = "console"
+                , a = "mobile"
+                , v = "tablet"
+                , x = "smarttv"
+                , k = "wearable"
+                , y = "embedded"
+                , _ = "Amazon"
+                , S = "Apple"
+                , T = "ASUS"
+                , q = "BlackBerry"
+                , z = "Browser"
+                , N = "Chrome"
+                , A = "Firefox"
+                , C = "Google"
+                , E = "Huawei"
+                , O = "LG"
+                , U = "Microsoft"
+                , j = "Motorola"
+                , R = "Opera"
+                , M = "Samsung"
+                , P = "Sony"
+                , V = "Xiaomi"
+                , B = "Zebra"
+                , D = "Facebook"
+                , I = function (i) {
                     return i.toLowerCase()
-                },
-                W = {
+                }
+                , W = {
                     ME: "4.90",
                     "NT 3.11": "NT3.51",
                     "NT 4.0": "NT4.0",
@@ -420,589 +420,77 @@
                     "8.1": "NT 6.3",
                     10: ["NT 6.4", "NT 10.0"],
                     RT: "ARM"
-                },
-                F = {
-                    browser: [
-                        [/\b(?:crmo|crios)\/([\w\.]+)/i],
-                        [h, [p, "Chrome"]],
-                        [/edg(?:e|ios|a)?\/([\w\.]+)/i],
-                        [h, [p, "Edge"]],
-                        [/(opera mini)\/([-\w\.]+)/i, /(opera [mobiletab]{3,6})\b.+version\/([-\w\.]+)/i, /(opera)(?:.+version\/|[\/ ]+)([\w\.]+)/i],
-                        [p, h],
-                        [/opios[\/ ]+([\w\.]+)/i],
-                        [h, [p, R + " Mini"]],
-                        [/\bopr\/([\w\.]+)/i],
-                        [h, [p, R]],
-                        [/(kindle)\/([\w\.]+)/i, /(lunascape|maxthon|netfront|jasmine|blazer)[\/ ]?([\w\.]*)/i, /(avant |iemobile|slim)(?:browser)?[\/ ]?([\w\.]*)/i, /(ba?idubrowser)[\/ ]?([\w\.]+)/i, /(?:ms|\()(ie) ([\w\.]+)/i,
-                            /(flock|rockmelt|midori|epiphany|silk|skyfire|ovibrowser|bolt|iron|vivaldi|iridium|phantomjs|bowser|quark|qupzilla|falkon|rekonq|puffin|brave|whale|qqbrowserlite|qq)\/([-\w\.]+)/i, /(weibo)__([\d\.]+)/i
-                        ],
-                        [p, h],
-                        [/(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i],
-                        [h, [p, "UC" + z]],
-                        [/\bqbcore\/([\w\.]+)/i],
-                        [h, [p, "WeChat(Win) Desktop"]],
-                        [/micromessenger\/([\w\.]+)/i],
-                        [h, [p, "WeChat"]],
-                        [/konqueror\/([\w\.]+)/i],
-                        [h, [p, "Konqueror"]],
-                        [/trident.+rv[: ]([\w\.]{1,9})\b.+like gecko/i],
-                        [h, [p, "IE"]],
-                        [/yabrowser\/([\w\.]+)/i],
-                        [h, [p, "Yandex"]],
-                        [/(avast|avg)\/([\w\.]+)/i],
-                        [
-                            [p, /(.+)/, "$1 Secure " + z], h
-                        ],
-                        [/\bfocus\/([\w\.]+)/i],
-                        [h, [p, A + " Focus"]],
-                        [/\bopt\/([\w\.]+)/i],
-                        [h, [p, R + " Touch"]],
-                        [/coc_coc\w+\/([\w\.]+)/i],
-                        [h, [p, "Coc Coc"]],
-                        [/dolfin\/([\w\.]+)/i],
-                        [h, [p, "Dolphin"]],
-                        [/coast\/([\w\.]+)/i],
-                        [h, [p, R + " Coast"]],
-                        [/miuibrowser\/([\w\.]+)/i],
-                        [h, [p, "MIUI " + z]],
-                        [/fxios\/([-\w\.]+)/i],
-                        [h, [p, A]],
-                        [/\bqihu|(qi?ho?o?|360)browser/i],
-                        [
-                            [p, "360 " + z]
-                        ],
-                        [/(oculus|samsung|sailfish)browser\/([\w\.]+)/i],
-                        [
-                            [p, /(.+)/, "$1 " + z], h
-                        ],
-                        [/(comodo_dragon)\/([\w\.]+)/i],
-                        [
-                            [p, /_/g, " "], h
-                        ],
-                        [/(electron)\/([\w\.]+) safari/i, /(tesla)(?: qtcarbrowser|\/(20\d\d\.[-\w\.]+))/i, /m?(qqbrowser|baiduboxapp|2345Explorer)[\/ ]?([\w\.]+)/i],
-                        [p, h],
-                        [/(metasr)[\/ ]?([\w\.]+)/i, /(lbbrowser)/i],
-                        [p],
-                        [/((?:fban\/fbios|fb_iab\/fb4a)(?!.+fbav)|;fbav\/([\w\.]+);)/i],
-                        [
-                            [p, D], h
-                        ],
-                        [/safari (line)\/([\w\.]+)/i, /\b(line)\/([\w\.]+)\/iab/i, /(chromium|instagram)[\/ ]([-\w\.]+)/i],
-                        [p, h],
-                        [/\bgsa\/([\w\.]+) .*safari\//i],
-                        [h, [p, "GSA"]],
-                        [/headlesschrome(?:\/([\w\.]+)| )/i],
-                        [h, [p, N + " Headless"]],
-                        [/ wv\).+(chrome)\/([\w\.]+)/i],
-                        [
-                            [p, N + " WebView"], h
-                        ],
-                        [/droid.+ version\/([\w\.]+)\b.+(?:mobile safari|safari)/i],
-                        [h, [p, "Android " + z]],
-                        [/(chrome|omniweb|arora|[tizenoka]{5} ?browser)\/v?([\w\.]+)/i],
-                        [p, h],
-                        [/version\/([\w\.]+) .*mobile\/\w+ (safari)/i],
-                        [h, [p, "Mobile Safari"]],
-                        [/version\/([\w\.]+) .*(mobile ?safari|safari)/i],
-                        [h, p],
-                        [/webkit.+?(mobile ?safari|safari)(\/[\w\.]+)/i],
-                        [p, [h, e, {
-                            "1.0": "/8",
-                            "1.2": "/1",
-                            "1.3": "/3",
-                            "2.0": "/412",
-                            "2.0.2": "/416",
-                            "2.0.3": "/417",
-                            "2.0.4": "/419",
-                            "?": "/"
-                        }]],
-                        [/(webkit|khtml)\/([\w\.]+)/i],
-                        [p, h],
-                        [/(navigator|netscape\d?)\/([-\w\.]+)/i],
-                        [
-                            [p, "Netscape"], h
-                        ],
-                        [/mobile vr; rv:([\w\.]+)\).+firefox/i],
-                        [h, [p, A + " Reality"]],
-                        [/ekiohf.+(flow)\/([\w\.]+)/i, /(swiftfox)/i, /(icedragon|iceweasel|camino|chimera|fennec|maemo browser|minimo|conkeror|klar)[\/ ]?([\w\.\+]+)/i, /(seamonkey|k-meleon|icecat|iceape|firebird|phoenix|palemoon|basilisk|waterfox)\/([-\w\.]+)$/i, /(firefox)\/([\w\.]+)/i, /(mozilla)\/([\w\.]+) .+rv\:.+gecko\/\d+/i, /(polaris|lynx|dillo|icab|doris|amaya|w3m|netsurf|sleipnir|obigo|mosaic|(?:go|ice|up)[\. ]?browser)[-\/ ]?v?([\w\.]+)/i,
-                            /(links) \(([\w\.]+)/i
-                        ],
-                        [p, h]
-                    ],
-                    cpu: [
-                        [/(?:(amd|x(?:(?:86|64)[-_])?|wow|win)64)[;\)]/i],
-                        [
-                            [g, "amd64"]
-                        ],
-                        [/(ia32(?=;))/i],
-                        [
-                            [g, I]
-                        ],
-                        [/((?:i[346]|x)86)[;\)]/i],
-                        [
-                            [g, "ia32"]
-                        ],
-                        [/\b(aarch64|arm(v?8e?l?|_?64))\b/i],
-                        [
-                            [g, "arm64"]
-                        ],
-                        [/\b(arm(?:v[67])?ht?n?[fl]p?)\b/i],
-                        [
-                            [g, "armhf"]
-                        ],
-                        [/windows (ce|mobile); ppc;/i],
-                        [
-                            [g, "arm"]
-                        ],
-                        [/((?:ppc|powerpc)(?:64)?)(?: mac|;|\))/i],
-                        [
-                            [g, /ower/, "", I]
-                        ],
-                        [/(sun4\w)[;\)]/i],
-                        [
-                            [g, "sparc"]
-                        ],
-                        [/((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i],
-                        [
-                            [g, I]
-                        ]
-                    ],
-                    device: [
-                        [/\b(sch-i[89]0\d|shw-m380s|sm-[pt]\w{2,4}|gt-[pn]\d{2,4}|sgh-t8[56]9|nexus 10)/i],
-                        [l, [f, M],
-                            [m, v]
-                        ],
-                        [/\b((?:s[cgp]h|gt|sm)-\w+|galaxy nexus)/i, /samsung[- ]([-\w]+)/i, /sec-(sgh\w+)/i],
-                        [l, [f, M],
-                            [m, a]
-                        ],
-                        [/\((ip(?:hone|od)[\w ]*);/i],
-                        [l, [f, S],
-                            [m, a]
-                        ],
-                        [/\((ipad);[-\w\),; ]+apple/i, /applecoremedia\/[\w\.]+ \((ipad)/i, /\b(ipad)\d\d?,\d\d?[;\]].+ios/i],
-                        [l, [f, S],
-                            [m, v]
-                        ],
-                        [/\b((?:ag[rs][23]?|bah2?|sht?|btv)-a?[lw]\d{2})\b(?!.+d\/s)/i],
-                        [l, [f, E],
-                            [m, v]
-                        ],
-                        [/(?:huawei|honor)([-\w ]+)[;\)]/i, /\b(nexus 6p|\w{2,4}-[atu]?[ln][01259x][012359][an]?)\b(?!.+d\/s)/i],
-                        [l, [f, E],
-                            [m, a]
-                        ],
-                        [/\b(poco[\w ]+)(?: bui|\))/i, /\b; (\w+) build\/hm\1/i, /\b(hm[-_ ]?note?[_ ]?(?:\d\w)?) bui/i, /\b(redmi[\-_ ]?(?:note|k)?[\w_ ]+)(?: bui|\))/i, /\b(mi[-_ ]?(?:a\d|one|one[_ ]plus|note lte|max)?[_ ]?(?:\d?\w?)[_ ]?(?:plus|se|lite)?)(?: bui|\))/i],
-                        [
-                            [l, /_/g, " "],
-                            [f, V],
-                            [m, a]
-                        ],
-                        [/\b(mi[-_ ]?(?:pad)(?:[\w_ ]+))(?: bui|\))/i],
-                        [
-                            [l, /_/g, " "],
-                            [f, V],
-                            [m, v]
-                        ],
-                        [/; (\w+) bui.+ oppo/i, /\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i],
-                        [l, [f, "OPPO"],
-                            [m, a]
-                        ],
-                        [/vivo (\w+)(?: bui|\))/i, /\b(v[12]\d{3}\w?[at])(?: bui|;)/i],
-                        [l, [f, "Vivo"],
-                            [m, a]
-                        ],
-                        [/\b(rmx[12]\d{3})(?: bui|;|\))/i],
-                        [l, [f, "Realme"],
-                            [m, a]
-                        ],
-                        [/\b(milestone|droid(?:[2-4x]| (?:bionic|x2|pro|razr))?:?( 4g)?)\b[\w ]+build\//i, /\bmot(?:orola)?[- ](\w*)/i, /((?:moto[\w\(\) ]+|xt\d{3,4}|nexus 6)(?= bui|\)))/i],
-                        [l, [f, j],
-                            [m, a]
-                        ],
-                        [/\b(mz60\d|xoom[2 ]{0,2}) build\//i],
-                        [l, [f, j],
-                            [m, v]
-                        ],
-                        [/((?=lg)?[vl]k\-?\d{3}) bui| 3\.[-\w; ]{10}lg?-([06cv9]{3,4})/i],
-                        [l, [f, O],
-                            [m, v]
-                        ],
-                        [/(lm(?:-?f100[nv]?|-[\w\.]+)(?= bui|\))|nexus [45])/i, /\blg[-e;\/ ]+((?!browser|netcast|android tv)\w+)/i,
-                            /\blg-?([\d\w]+) bui/i
-                        ],
-                        [l, [f, O],
-                            [m, a]
-                        ],
-                        [/(ideatab[-\w ]+)/i, /lenovo ?(s[56]000[-\w]+|tab(?:[\w ]+)|yt[-\d\w]{6}|tb[-\d\w]{6})/i],
-                        [l, [f, "Lenovo"],
-                            [m, v]
-                        ],
-                        [/(?:maemo|nokia).*(n900|lumia \d+)/i, /nokia[-_ ]?([-\w\.]*)/i],
-                        [
-                            [l, /_/g, " "],
-                            [f, "Nokia"],
-                            [m, a]
-                        ],
-                        [/(pixel c)\b/i],
-                        [l, [f, C],
-                            [m, v]
-                        ],
-                        [/droid.+; (pixel[\daxl ]{0,6})(?: bui|\))/i],
-                        [l, [f, C],
-                            [m, a]
-                        ],
-                        [/droid.+ ([c-g]\d{4}|so[-gl]\w+|xq-a\w[4-7][12])(?= bui|\).+chrome\/(?![1-6]{0,1}\d\.))/i],
-                        [l, [f, P],
-                            [m, a]
-                        ],
-                        [/sony tablet [ps]/i, /\b(?:sony)?sgp\w+(?: bui|\))/i],
-                        [
-                            [l, "Xperia Tablet"],
-                            [f, P],
-                            [m, v]
-                        ],
-                        [/ (kb2005|in20[12]5|be20[12][59])\b/i, /(?:one)?(?:plus)? (a\d0\d\d)(?: b|\))/i],
-                        [l, [f, "OnePlus"],
-                            [m, a]
-                        ],
-                        [/(alexa)webm/i, /(kf[a-z]{2}wi)( bui|\))/i, /(kf[a-z]+)( bui|\)).+silk\//i],
-                        [l, [f, _],
-                            [m, v]
-                        ],
-                        [/((?:sd|kf)[0349hijorstuw]+)( bui|\)).+silk\//i],
-                        [
-                            [l, /(.+)/g, "Fire Phone $1"],
-                            [f, _],
-                            [m, a]
-                        ],
-                        [/(playbook);[-\w\),; ]+(rim)/i],
-                        [l, f, [m, v]],
-                        [/\b((?:bb[a-f]|st[hv])100-\d)/i, /\(bb10; (\w+)/i],
-                        [l, [f, q],
-                            [m, a]
-                        ],
-                        [/(?:\b|asus_)(transfo[prime ]{4,10} \w+|eeepc|slider \w+|nexus 7|padfone|p00[cj])/i],
-                        [l, [f, T],
-                            [m, v]
-                        ],
-                        [/ (z[bes]6[027][012][km][ls]|zenfone \d\w?)\b/i],
-                        [l, [f, T],
-                            [m, a]
-                        ],
-                        [/(nexus 9)/i],
-                        [l, [f, "HTC"],
-                            [m, v]
-                        ],
-                        [/(htc)[-;_ ]{1,2}([\w ]+(?=\)| bui)|\w+)/i, /(zte)[- ]([\w ]+?)(?: bui|\/|\))/i, /(alcatel|geeksphone|nexian|panasonic|sony)[-_ ]?([-\w]*)/i],
-                        [f, [l, /_/g, " "],
-                            [m, a]
-                        ],
-                        [/droid.+; ([ab][1-7]-?[0178a]\d\d?)/i],
-                        [l, [f, "Acer"],
-                            [m, v]
-                        ],
-                        [/droid.+; (m[1-5] note) bui/i, /\bmz-([-\w]{2,})/i],
-                        [l, [f, "Meizu"],
-                            [m, a]
-                        ],
-                        [/\b(sh-?[altvz]?\d\d[a-ekm]?)/i],
-                        [l, [f, "Sharp"],
-                            [m, a]
-                        ],
-                        [/(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus|dell|meizu|motorola|polytron)[-_ ]?([-\w]*)/i,
-                            /(hp) ([\w ]+\w)/i, /(asus)-?(\w+)/i, /(microsoft); (lumia[\w ]+)/i, /(lenovo)[-_ ]?([-\w]+)/i, /(jolla)/i, /(oppo) ?([\w ]+) bui/i
-                        ],
-                        [f, l, [m, a]],
-                        [/(archos) (gamepad2?)/i, /(hp).+(touchpad(?!.+tablet)|tablet)/i, /(kindle)\/([\w\.]+)/i, /(nook)[\w ]+build\/(\w+)/i, /(dell) (strea[kpr\d ]*[\dko])/i, /(le[- ]+pan)[- ]+(\w{1,9}) bui/i, /(trinity)[- ]*(t\d{3}) bui/i, /(gigaset)[- ]+(q\w{1,9}) bui/i, /(vodafone) ([\w ]+)(?:\)| bui)/i],
-                        [f, l, [m, v]],
-                        [/(surface duo)/i],
-                        [l, [f, U],
-                            [m, v]
-                        ],
-                        [/droid [\d\.]+; (fp\du?)(?: b|\))/i],
-                        [l, [f, "Fairphone"],
-                            [m, a]
-                        ],
-                        [/(u304aa)/i],
-                        [l, [f, "AT&T"],
-                            [m, a]
-                        ],
-                        [/\bsie-(\w*)/i],
-                        [l, [f, "Siemens"],
-                            [m, a]
-                        ],
-                        [/\b(rct\w+) b/i],
-                        [l, [f, "RCA"],
-                            [m, v]
-                        ],
-                        [/\b(venue[\d ]{2,7}) b/i],
-                        [l, [f, "Dell"],
-                            [m, v]
-                        ],
-                        [/\b(q(?:mv|ta)\w+) b/i],
-                        [l, [f, "Verizon"],
-                            [m, v]
-                        ],
-                        [/\b(?:barnes[& ]+noble |bn[rt])([\w\+ ]*) b/i],
-                        [l, [f, "Barnes & Noble"],
-                            [m, v]
-                        ],
-                        [/\b(tm\d{3}\w+) b/i],
-                        [l, [f, "NuVision"],
-                            [m, v]
-                        ],
-                        [/\b(k88) b/i],
-                        [l, [f, "ZTE"],
-                            [m, v]
-                        ],
-                        [/\b(nx\d{3}j) b/i],
-                        [l, [f, "ZTE"],
-                            [m, a]
-                        ],
-                        [/\b(gen\d{3}) b.+49h/i],
-                        [l, [f, "Swiss"],
-                            [m, a]
-                        ],
-                        [/\b(zur\d{3}) b/i],
-                        [l, [f, "Swiss"],
-                            [m, v]
-                        ],
-                        [/\b((zeki)?tb.*\b) b/i],
-                        [l, [f, "Zeki"],
-                            [m, v]
-                        ],
-                        [/\b([yr]\d{2}) b/i, /\b(dragon[- ]+touch |dt)(\w{5}) b/i],
-                        [
-                            [f, "Dragon Touch"], l, [m, v]
-                        ],
-                        [/\b(ns-?\w{0,9}) b/i],
-                        [l, [f, "Insignia"],
-                            [m, v]
-                        ],
-                        [/\b((nxa|next)-?\w{0,9}) b/i],
-                        [l, [f, "NextBook"],
-                            [m, v]
-                        ],
-                        [/\b(xtreme\_)?(v(1[045]|2[015]|[3469]0|7[05])) b/i],
-                        [
-                            [f, "Voice"], l, [m, a]
-                        ],
-                        [/\b(lvtel\-)?(v1[12]) b/i],
-                        [
-                            [f, "LvTel"], l, [m, a]
-                        ],
-                        [/\b(ph-1) /i],
-                        [l, [f, "Essential"],
-                            [m, a]
-                        ],
-                        [/\b(v(100md|700na|7011|917g).*\b) b/i],
-                        [l, [f, "Envizen"],
-                            [m, v]
-                        ],
-                        [/\b(trio[-\w\. ]+) b/i],
-                        [l, [f, "MachSpeed"],
-                            [m, v]
-                        ],
-                        [/\btu_(1491) b/i],
-                        [l, [f, "Rotor"],
-                            [m, v]
-                        ],
-                        [/(shield[\w ]+) b/i],
-                        [l, [f, "Nvidia"],
-                            [m, v]
-                        ],
-                        [/(sprint) (\w+)/i],
-                        [f, l, [m, a]],
-                        [/(kin\.[onetw]{3})/i],
-                        [
-                            [l, /\./g, " "],
-                            [f, U],
-                            [m, a]
-                        ],
-                        [/droid.+; (cc6666?|et5[16]|mc[239][23]x?|vc8[03]x?)\)/i],
-                        [l, [f, B],
-                            [m, v]
-                        ],
-                        [/droid.+; (ec30|ps20|tc[2-8]\d[kx])\)/i],
-                        [l, [f, B],
-                            [m, a]
-                        ],
-                        [/(ouya)/i, /(nintendo) ([wids3utch]+)/i],
-                        [f, l, [m, o]],
-                        [/droid.+; (shield) bui/i],
-                        [l, [f, "Nvidia"],
-                            [m, o]
-                        ],
-                        [/(playstation [345portablevi]+)/i],
-                        [l, [f, P],
-                            [m, o]
-                        ],
-                        [/\b(xbox(?: one)?(?!; xbox))[\); ]/i],
-                        [l, [f, U],
-                            [m, o]
-                        ],
-                        [/smart-tv.+(samsung)/i],
-                        [f, [m, x]],
-                        [/hbbtv.+maple;(\d+)/i],
-                        [
-                            [l, /^/, "SmartTV"],
-                            [f, M],
-                            [m, x]
-                        ],
-                        [/(nux; netcast.+smarttv|lg (netcast\.tv-201\d|android tv))/i],
-                        [
-                            [f, O],
-                            [m, x]
-                        ],
-                        [/(apple) ?tv/i],
-                        [f, [l, S + " TV"],
-                            [m, x]
-                        ],
-                        [/crkey/i],
-                        [
-                            [l, N + "cast"],
-                            [f, C],
-                            [m, x]
-                        ],
-                        [/droid.+aft(\w)( bui|\))/i],
-                        [l, [f, _],
-                            [m, x]
-                        ],
-                        [/\(dtv[\);].+(aquos)/i],
-                        [l, [f, "Sharp"],
-                            [m, x]
-                        ],
-                        [/\b(roku)[\dx]*[\)\/]((?:dvp-)?[\d\.]*)/i, /hbbtv\/\d+\.\d+\.\d+ +\([\w ]*; *(\w[^;]*);([^;]*)/i],
-                        [
-                            [f, t],
-                            [l, t],
-                            [m, x]
-                        ],
-                        [/\b(android tv|smart[- ]?tv|opera tv|tv; rv:)\b/i],
-                        [
-                            [m, x]
-                        ],
-                        [/((pebble))app/i],
-                        [f, l, [m, k]],
-                        [/droid.+; (glass) \d/i],
-                        [l, [f, C],
-                            [m, k]
-                        ],
-                        [/droid.+; (wt63?0{2,3})\)/i],
-                        [l, [f, B],
-                            [m, k]
-                        ],
-                        [/(quest( 2)?)/i],
-                        [l, [f, D],
-                            [m, k]
-                        ],
-                        [/(tesla)(?: qtcarbrowser|\/[-\w\.]+)/i],
-                        [f, [m, y]],
-                        [/droid .+?; ([^;]+?)(?: bui|\) applew).+? mobile safari/i],
-                        [l, [m, a]],
-                        [/droid .+?; ([^;]+?)(?: bui|\) applew).+?(?! mobile) safari/i],
-                        [l, [m, v]],
-                        [/\b((tablet|tab)[;\/]|focus\/\d(?!.+mobile))/i],
-                        [
-                            [m, v]
-                        ],
-                        [/(phone|mobile(?:[;\/]| safari)|pda(?=.+windows ce))/i],
-                        [
-                            [m, a]
-                        ],
-                        [/(android[-\w\. ]{0,9});.+buil/i],
-                        [l, [f, "Generic"]]
-                    ],
-                    engine: [
-                        [/windows.+ edge\/([\w\.]+)/i],
-                        [h, [p, "EdgeHTML"]],
-                        [/webkit\/537\.36.+chrome\/(?!27)([\w\.]+)/i],
-                        [h, [p, "Blink"]],
-                        [/(presto)\/([\w\.]+)/i, /(webkit|trident|netfront|netsurf|amaya|lynx|w3m|goanna)\/([\w\.]+)/i, /ekioh(flow)\/([\w\.]+)/i, /(khtml|tasman|links)[\/ ]\(?([\w\.]+)/i, /(icab)[\/ ]([23]\.[\d\.]+)/i],
-                        [p, h],
-                        [/rv\:([\w\.]{1,9})\b.+(gecko)/i],
-                        [h, p]
-                    ],
-                    os: [
-                        [/microsoft (windows) (vista|xp)/i],
-                        [p, h],
-                        [/(windows) nt 6\.2; (arm)/i, /(windows (?:phone(?: os)?|mobile))[\/ ]?([\d\.\w ]*)/i,
-                            /(windows)[\/ ]?([ntce\d\. ]+\w)(?!.+xbox)/i
-                        ],
-                        [p, [h, e, W]],
-                        [/(win(?=3|9|n)|win 9x )([nt\d\.]+)/i],
-                        [
-                            [p, "Windows"],
-                            [h, e, W]
-                        ],
-                        [/ip[honead]{2,4}\b(?:.*os ([\w]+) like mac|; opera)/i, /cfnetwork\/.+darwin/i],
-                        [
-                            [h, /_/g, "."],
-                            [p, "iOS"]
-                        ],
-                        [/(mac os x) ?([\w\. ]*)/i, /(macintosh|mac_powerpc\b)(?!.+haiku)/i],
-                        [
-                            [p, "Mac OS"],
-                            [h, /_/g, "."]
-                        ],
-                        [/droid ([\w\.]+)\b.+(android[- ]x86)/i],
-                        [h, p],
-                        [/(android|webos|qnx|bada|rim tablet os|maemo|meego|sailfish)[-\/ ]?([\w\.]*)/i, /(blackberry)\w*\/([\w\.]*)/i, /(tizen|kaios)[\/ ]([\w\.]+)/i,
-                            /\((series40);/i
-                        ],
-                        [p, h],
-                        [/\(bb(10);/i],
-                        [h, [p, q]],
-                        [/(?:symbian ?os|symbos|s60(?=;)|series60)[-\/ ]?([\w\.]*)/i],
-                        [h, [p, "Symbian"]],
-                        [/mozilla\/[\d\.]+ \((?:mobile|tablet|tv|mobile; [\w ]+); rv:.+ gecko\/([\w\.]+)/i],
-                        [h, [p, A + " OS"]],
-                        [/web0s;.+rt(tv)/i, /\b(?:hp)?wos(?:browser)?\/([\w\.]+)/i],
-                        [h, [p, "webOS"]],
-                        [/crkey\/([\d\.]+)/i],
-                        [h, [p, N + "cast"]],
-                        [/(cros) [\w]+ ([\w\.]+\w)/i],
-                        [
-                            [p, "Chromium OS"], h
-                        ],
-                        [/(nintendo|playstation) ([wids345portablevuch]+)/i, /(xbox); +xbox ([^\);]+)/i, /\b(joli|palm)\b ?(?:os)?\/?([\w\.]*)/i,
-                            /(mint)[\/\(\) ]?(\w*)/i, /(mageia|vectorlinux)[; ]/i, /([kxln]?ubuntu|debian|suse|opensuse|gentoo|arch(?= linux)|slackware|fedora|mandriva|centos|pclinuxos|red ?hat|zenwalk|linpus|raspbian|plan 9|minix|risc os|contiki|deepin|manjaro|elementary os|sabayon|linspire)(?: gnu\/linux)?(?: enterprise)?(?:[- ]linux)?(?:-gnu)?[-\/ ]?(?!chrom|package)([-\w\.]*)/i, /(hurd|linux) ?([\w\.]*)/i, /(gnu) ?([\w\.]*)/i, /\b([-frentopcghs]{0,5}bsd|dragonfly)[\/ ]?(?!amd|[ix346]{1,2}86)([\w\.]*)/i, /(haiku) (\w+)/i
-                        ],
-                        [p, h],
-                        [/(sunos) ?([\w\.\d]*)/i],
-                        [
-                            [p, "Solaris"], h
-                        ],
-                        [/((?:open)?solaris)[-\/ ]?([\w\.]*)/i, /(aix) ((\d)(?=\.|\)| )[\w\.])*/i, /\b(beos|os\/2|amigaos|morphos|openvms|fuchsia|hp-ux)/i, /(unix) ?([\w\.]*)/i],
-                        [p, h]
-                    ]
-                },
-                G = function (i, e) {
-                    if (typeof i == c && (e = i, i = d), !(this instanceof G)) return (new G(i, e)).getResult();
-                    var o = i || (typeof r != b && r.navigator && r.navigator.userAgent ? r.navigator.userAgent : ""),
-                        a = e ? function (i, e) {
+                }
+                , F = {
+                    browser: [[/\b(?:crmo|crios)\/([\w\.]+)/i], [h, [p, "Chrome"]], [/edg(?:e|ios|a)?\/([\w\.]+)/i], [h, [p, "Edge"]], [/(opera mini)\/([-\w\.]+)/i, /(opera [mobiletab]{3,6})\b.+version\/([-\w\.]+)/i, /(opera)(?:.+version\/|[\/ ]+)([\w\.]+)/i], [p, h], [/opios[\/ ]+([\w\.]+)/i], [h, [p, R + " Mini"]], [/\bopr\/([\w\.]+)/i], [h, [p, R]], [/(kindle)\/([\w\.]+)/i, /(lunascape|maxthon|netfront|jasmine|blazer)[\/ ]?([\w\.]*)/i, /(avant |iemobile|slim)(?:browser)?[\/ ]?([\w\.]*)/i, /(ba?idubrowser)[\/ ]?([\w\.]+)/i, /(?:ms|\()(ie) ([\w\.]+)/i, /(flock|rockmelt|midori|epiphany|silk|skyfire|ovibrowser|bolt|iron|vivaldi|iridium|phantomjs|bowser|quark|qupzilla|falkon|rekonq|puffin|brave|whale|qqbrowserlite|qq)\/([-\w\.]+)/i, /(weibo)__([\d\.]+)/i], [p, h], [/(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i], [h, [p, "UC" + z]], [/\bqbcore\/([\w\.]+)/i], [h, [p, "WeChat(Win) Desktop"]], [/micromessenger\/([\w\.]+)/i], [h, [p, "WeChat"]], [/konqueror\/([\w\.]+)/i], [h, [p, "Konqueror"]], [/trident.+rv[: ]([\w\.]{1,9})\b.+like gecko/i], [h, [p, "IE"]], [/yabrowser\/([\w\.]+)/i], [h, [p, "Yandex"]], [/(avast|avg)\/([\w\.]+)/i], [[p, /(.+)/, "$1 Secure " + z], h], [/\bfocus\/([\w\.]+)/i], [h, [p, A + " Focus"]], [/\bopt\/([\w\.]+)/i], [h, [p, R + " Touch"]], [/coc_coc\w+\/([\w\.]+)/i], [h, [p, "Coc Coc"]], [/dolfin\/([\w\.]+)/i], [h, [p, "Dolphin"]], [/coast\/([\w\.]+)/i], [h, [p, R + " Coast"]], [/miuibrowser\/([\w\.]+)/i], [h, [p, "MIUI " + z]], [/fxios\/([-\w\.]+)/i], [h, [p, A]], [/\bqihu|(qi?ho?o?|360)browser/i], [[p, "360 " + z]], [/(oculus|samsung|sailfish)browser\/([\w\.]+)/i], [[p, /(.+)/, "$1 " + z], h], [/(comodo_dragon)\/([\w\.]+)/i], [[p, /_/g, " "], h], [/(electron)\/([\w\.]+) safari/i, /(tesla)(?: qtcarbrowser|\/(20\d\d\.[-\w\.]+))/i, /m?(qqbrowser|baiduboxapp|2345Explorer)[\/ ]?([\w\.]+)/i], [p, h], [/(metasr)[\/ ]?([\w\.]+)/i, /(lbbrowser)/i], [p], [/((?:fban\/fbios|fb_iab\/fb4a)(?!.+fbav)|;fbav\/([\w\.]+);)/i], [[p, D], h], [/safari (line)\/([\w\.]+)/i, /\b(line)\/([\w\.]+)\/iab/i, /(chromium|instagram)[\/ ]([-\w\.]+)/i], [p, h], [/\bgsa\/([\w\.]+) .*safari\//i], [h, [p, "GSA"]], [/headlesschrome(?:\/([\w\.]+)| )/i], [h, [p, N + " Headless"]], [/ wv\).+(chrome)\/([\w\.]+)/i], [[p, N + " WebView"], h], [/droid.+ version\/([\w\.]+)\b.+(?:mobile safari|safari)/i], [h, [p, "Android " + z]], [/(chrome|omniweb|arora|[tizenoka]{5} ?browser)\/v?([\w\.]+)/i], [p, h], [/version\/([\w\.]+) .*mobile\/\w+ (safari)/i], [h, [p, "Mobile Safari"]], [/version\/([\w\.]+) .*(mobile ?safari|safari)/i], [h, p], [/webkit.+?(mobile ?safari|safari)(\/[\w\.]+)/i], [p, [h, e, {
+                        "1.0": "/8",
+                        "1.2": "/1",
+                        "1.3": "/3",
+                        "2.0": "/412",
+                        "2.0.2": "/416",
+                        "2.0.3": "/417",
+                        "2.0.4": "/419",
+                        "?": "/"
+                    }]], [/(webkit|khtml)\/([\w\.]+)/i], [p, h], [/(navigator|netscape\d?)\/([-\w\.]+)/i], [[p, "Netscape"], h], [/mobile vr; rv:([\w\.]+)\).+firefox/i], [h, [p, A + " Reality"]], [/ekiohf.+(flow)\/([\w\.]+)/i, /(swiftfox)/i, /(icedragon|iceweasel|camino|chimera|fennec|maemo browser|minimo|conkeror|klar)[\/ ]?([\w\.\+]+)/i, /(seamonkey|k-meleon|icecat|iceape|firebird|phoenix|palemoon|basilisk|waterfox)\/([-\w\.]+)$/i, /(firefox)\/([\w\.]+)/i, /(mozilla)\/([\w\.]+) .+rv\:.+gecko\/\d+/i, /(polaris|lynx|dillo|icab|doris|amaya|w3m|netsurf|sleipnir|obigo|mosaic|(?:go|ice|up)[\. ]?browser)[-\/ ]?v?([\w\.]+)/i, /(links) \(([\w\.]+)/i], [p, h]],
+                    cpu: [[/(?:(amd|x(?:(?:86|64)[-_])?|wow|win)64)[;\)]/i], [[g, "amd64"]], [/(ia32(?=;))/i], [[g, I]], [/((?:i[346]|x)86)[;\)]/i], [[g, "ia32"]], [/\b(aarch64|arm(v?8e?l?|_?64))\b/i], [[g, "arm64"]], [/\b(arm(?:v[67])?ht?n?[fl]p?)\b/i], [[g, "armhf"]], [/windows (ce|mobile); ppc;/i], [[g, "arm"]], [/((?:ppc|powerpc)(?:64)?)(?: mac|;|\))/i], [[g, /ower/, "", I]], [/(sun4\w)[;\)]/i], [[g, "sparc"]], [/((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i], [[g, I]]],
+                    device: [[/\b(sch-i[89]0\d|shw-m380s|sm-[pt]\w{2,4}|gt-[pn]\d{2,4}|sgh-t8[56]9|nexus 10)/i], [l, [f, M], [m, v]], [/\b((?:s[cgp]h|gt|sm)-\w+|galaxy nexus)/i, /samsung[- ]([-\w]+)/i, /sec-(sgh\w+)/i], [l, [f, M], [m, a]], [/\((ip(?:hone|od)[\w ]*);/i], [l, [f, S], [m, a]], [/\((ipad);[-\w\),; ]+apple/i, /applecoremedia\/[\w\.]+ \((ipad)/i, /\b(ipad)\d\d?,\d\d?[;\]].+ios/i], [l, [f, S], [m, v]], [/\b((?:ag[rs][23]?|bah2?|sht?|btv)-a?[lw]\d{2})\b(?!.+d\/s)/i], [l, [f, E], [m, v]], [/(?:huawei|honor)([-\w ]+)[;\)]/i, /\b(nexus 6p|\w{2,4}-[atu]?[ln][01259x][012359][an]?)\b(?!.+d\/s)/i], [l, [f, E], [m, a]], [/\b(poco[\w ]+)(?: bui|\))/i, /\b; (\w+) build\/hm\1/i, /\b(hm[-_ ]?note?[_ ]?(?:\d\w)?) bui/i, /\b(redmi[\-_ ]?(?:note|k)?[\w_ ]+)(?: bui|\))/i, /\b(mi[-_ ]?(?:a\d|one|one[_ ]plus|note lte|max)?[_ ]?(?:\d?\w?)[_ ]?(?:plus|se|lite)?)(?: bui|\))/i], [[l, /_/g, " "], [f, V], [m, a]], [/\b(mi[-_ ]?(?:pad)(?:[\w_ ]+))(?: bui|\))/i], [[l, /_/g, " "], [f, V], [m, v]], [/; (\w+) bui.+ oppo/i, /\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i], [l, [f, "OPPO"], [m, a]], [/vivo (\w+)(?: bui|\))/i, /\b(v[12]\d{3}\w?[at])(?: bui|;)/i], [l, [f, "Vivo"], [m, a]], [/\b(rmx[12]\d{3})(?: bui|;|\))/i], [l, [f, "Realme"], [m, a]], [/\b(milestone|droid(?:[2-4x]| (?:bionic|x2|pro|razr))?:?( 4g)?)\b[\w ]+build\//i, /\bmot(?:orola)?[- ](\w*)/i, /((?:moto[\w\(\) ]+|xt\d{3,4}|nexus 6)(?= bui|\)))/i], [l, [f, j], [m, a]], [/\b(mz60\d|xoom[2 ]{0,2}) build\//i], [l, [f, j], [m, v]], [/((?=lg)?[vl]k\-?\d{3}) bui| 3\.[-\w; ]{10}lg?-([06cv9]{3,4})/i], [l, [f, O], [m, v]], [/(lm(?:-?f100[nv]?|-[\w\.]+)(?= bui|\))|nexus [45])/i, /\blg[-e;\/ ]+((?!browser|netcast|android tv)\w+)/i, /\blg-?([\d\w]+) bui/i], [l, [f, O], [m, a]], [/(ideatab[-\w ]+)/i, /lenovo ?(s[56]000[-\w]+|tab(?:[\w ]+)|yt[-\d\w]{6}|tb[-\d\w]{6})/i], [l, [f, "Lenovo"], [m, v]], [/(?:maemo|nokia).*(n900|lumia \d+)/i, /nokia[-_ ]?([-\w\.]*)/i], [[l, /_/g, " "], [f, "Nokia"], [m, a]], [/(pixel c)\b/i], [l, [f, C], [m, v]], [/droid.+; (pixel[\daxl ]{0,6})(?: bui|\))/i], [l, [f, C], [m, a]], [/droid.+ ([c-g]\d{4}|so[-gl]\w+|xq-a\w[4-7][12])(?= bui|\).+chrome\/(?![1-6]{0,1}\d\.))/i], [l, [f, P], [m, a]], [/sony tablet [ps]/i, /\b(?:sony)?sgp\w+(?: bui|\))/i], [[l, "Xperia Tablet"], [f, P], [m, v]], [/ (kb2005|in20[12]5|be20[12][59])\b/i, /(?:one)?(?:plus)? (a\d0\d\d)(?: b|\))/i], [l, [f, "OnePlus"], [m, a]], [/(alexa)webm/i, /(kf[a-z]{2}wi)( bui|\))/i, /(kf[a-z]+)( bui|\)).+silk\//i], [l, [f, _], [m, v]], [/((?:sd|kf)[0349hijorstuw]+)( bui|\)).+silk\//i], [[l, /(.+)/g, "Fire Phone $1"], [f, _], [m, a]], [/(playbook);[-\w\),; ]+(rim)/i], [l, f, [m, v]], [/\b((?:bb[a-f]|st[hv])100-\d)/i, /\(bb10; (\w+)/i], [l, [f, q], [m, a]], [/(?:\b|asus_)(transfo[prime ]{4,10} \w+|eeepc|slider \w+|nexus 7|padfone|p00[cj])/i], [l, [f, T], [m, v]], [/ (z[bes]6[027][012][km][ls]|zenfone \d\w?)\b/i], [l, [f, T], [m, a]], [/(nexus 9)/i], [l, [f, "HTC"], [m, v]], [/(htc)[-;_ ]{1,2}([\w ]+(?=\)| bui)|\w+)/i, /(zte)[- ]([\w ]+?)(?: bui|\/|\))/i, /(alcatel|geeksphone|nexian|panasonic|sony)[-_ ]?([-\w]*)/i], [f, [l, /_/g, " "], [m, a]], [/droid.+; ([ab][1-7]-?[0178a]\d\d?)/i], [l, [f, "Acer"], [m, v]], [/droid.+; (m[1-5] note) bui/i, /\bmz-([-\w]{2,})/i], [l, [f, "Meizu"], [m, a]], [/\b(sh-?[altvz]?\d\d[a-ekm]?)/i], [l, [f, "Sharp"], [m, a]], [/(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus|dell|meizu|motorola|polytron)[-_ ]?([-\w]*)/i, /(hp) ([\w ]+\w)/i, /(asus)-?(\w+)/i, /(microsoft); (lumia[\w ]+)/i, /(lenovo)[-_ ]?([-\w]+)/i, /(jolla)/i, /(oppo) ?([\w ]+) bui/i], [f, l, [m, a]], [/(archos) (gamepad2?)/i, /(hp).+(touchpad(?!.+tablet)|tablet)/i, /(kindle)\/([\w\.]+)/i, /(nook)[\w ]+build\/(\w+)/i, /(dell) (strea[kpr\d ]*[\dko])/i, /(le[- ]+pan)[- ]+(\w{1,9}) bui/i, /(trinity)[- ]*(t\d{3}) bui/i, /(gigaset)[- ]+(q\w{1,9}) bui/i, /(vodafone) ([\w ]+)(?:\)| bui)/i], [f, l, [m, v]], [/(surface duo)/i], [l, [f, U], [m, v]], [/droid [\d\.]+; (fp\du?)(?: b|\))/i], [l, [f, "Fairphone"], [m, a]], [/(u304aa)/i], [l, [f, "AT&T"], [m, a]], [/\bsie-(\w*)/i], [l, [f, "Siemens"], [m, a]], [/\b(rct\w+) b/i], [l, [f, "RCA"], [m, v]], [/\b(venue[\d ]{2,7}) b/i], [l, [f, "Dell"], [m, v]], [/\b(q(?:mv|ta)\w+) b/i], [l, [f, "Verizon"], [m, v]], [/\b(?:barnes[& ]+noble |bn[rt])([\w\+ ]*) b/i], [l, [f, "Barnes & Noble"], [m, v]], [/\b(tm\d{3}\w+) b/i], [l, [f, "NuVision"], [m, v]], [/\b(k88) b/i], [l, [f, "ZTE"], [m, v]], [/\b(nx\d{3}j) b/i], [l, [f, "ZTE"], [m, a]], [/\b(gen\d{3}) b.+49h/i], [l, [f, "Swiss"], [m, a]], [/\b(zur\d{3}) b/i], [l, [f, "Swiss"], [m, v]], [/\b((zeki)?tb.*\b) b/i], [l, [f, "Zeki"], [m, v]], [/\b([yr]\d{2}) b/i, /\b(dragon[- ]+touch |dt)(\w{5}) b/i], [[f, "Dragon Touch"], l, [m, v]], [/\b(ns-?\w{0,9}) b/i], [l, [f, "Insignia"], [m, v]], [/\b((nxa|next)-?\w{0,9}) b/i], [l, [f, "NextBook"], [m, v]], [/\b(xtreme\_)?(v(1[045]|2[015]|[3469]0|7[05])) b/i], [[f, "Voice"], l, [m, a]], [/\b(lvtel\-)?(v1[12]) b/i], [[f, "LvTel"], l, [m, a]], [/\b(ph-1) /i], [l, [f, "Essential"], [m, a]], [/\b(v(100md|700na|7011|917g).*\b) b/i], [l, [f, "Envizen"], [m, v]], [/\b(trio[-\w\. ]+) b/i], [l, [f, "MachSpeed"], [m, v]], [/\btu_(1491) b/i], [l, [f, "Rotor"], [m, v]], [/(shield[\w ]+) b/i], [l, [f, "Nvidia"], [m, v]], [/(sprint) (\w+)/i], [f, l, [m, a]], [/(kin\.[onetw]{3})/i], [[l, /\./g, " "], [f, U], [m, a]], [/droid.+; (cc6666?|et5[16]|mc[239][23]x?|vc8[03]x?)\)/i], [l, [f, B], [m, v]], [/droid.+; (ec30|ps20|tc[2-8]\d[kx])\)/i], [l, [f, B], [m, a]], [/(ouya)/i, /(nintendo) ([wids3utch]+)/i], [f, l, [m, o]], [/droid.+; (shield) bui/i], [l, [f, "Nvidia"], [m, o]], [/(playstation [345portablevi]+)/i], [l, [f, P], [m, o]], [/\b(xbox(?: one)?(?!; xbox))[\); ]/i], [l, [f, U], [m, o]], [/smart-tv.+(samsung)/i], [f, [m, x]], [/hbbtv.+maple;(\d+)/i], [[l, /^/, "SmartTV"], [f, M], [m, x]], [/(nux; netcast.+smarttv|lg (netcast\.tv-201\d|android tv))/i], [[f, O], [m, x]], [/(apple) ?tv/i], [f, [l, S + " TV"], [m, x]], [/crkey/i], [[l, N + "cast"], [f, C], [m, x]], [/droid.+aft(\w)( bui|\))/i], [l, [f, _], [m, x]], [/\(dtv[\);].+(aquos)/i], [l, [f, "Sharp"], [m, x]], [/\b(roku)[\dx]*[\)\/]((?:dvp-)?[\d\.]*)/i, /hbbtv\/\d+\.\d+\.\d+ +\([\w ]*; *(\w[^;]*);([^;]*)/i], [[f, t], [l, t], [m, x]], [/\b(android tv|smart[- ]?tv|opera tv|tv; rv:)\b/i], [[m, x]], [/((pebble))app/i], [f, l, [m, k]], [/droid.+; (glass) \d/i], [l, [f, C], [m, k]], [/droid.+; (wt63?0{2,3})\)/i], [l, [f, B], [m, k]], [/(quest( 2)?)/i], [l, [f, D], [m, k]], [/(tesla)(?: qtcarbrowser|\/[-\w\.]+)/i], [f, [m, y]], [/droid .+?; ([^;]+?)(?: bui|\) applew).+? mobile safari/i], [l, [m, a]], [/droid .+?; ([^;]+?)(?: bui|\) applew).+?(?! mobile) safari/i], [l, [m, v]], [/\b((tablet|tab)[;\/]|focus\/\d(?!.+mobile))/i], [[m, v]], [/(phone|mobile(?:[;\/]| safari)|pda(?=.+windows ce))/i], [[m, a]], [/(android[-\w\. ]{0,9});.+buil/i], [l, [f, "Generic"]]],
+                    engine: [[/windows.+ edge\/([\w\.]+)/i], [h, [p, "EdgeHTML"]], [/webkit\/537\.36.+chrome\/(?!27)([\w\.]+)/i], [h, [p, "Blink"]], [/(presto)\/([\w\.]+)/i, /(webkit|trident|netfront|netsurf|amaya|lynx|w3m|goanna)\/([\w\.]+)/i, /ekioh(flow)\/([\w\.]+)/i, /(khtml|tasman|links)[\/ ]\(?([\w\.]+)/i, /(icab)[\/ ]([23]\.[\d\.]+)/i], [p, h], [/rv\:([\w\.]{1,9})\b.+(gecko)/i], [h, p]],
+                    os: [[/microsoft (windows) (vista|xp)/i], [p, h], [/(windows) nt 6\.2; (arm)/i, /(windows (?:phone(?: os)?|mobile))[\/ ]?([\d\.\w ]*)/i, /(windows)[\/ ]?([ntce\d\. ]+\w)(?!.+xbox)/i], [p, [h, e, W]], [/(win(?=3|9|n)|win 9x )([nt\d\.]+)/i], [[p, "Windows"], [h, e, W]], [/ip[honead]{2,4}\b(?:.*os ([\w]+) like mac|; opera)/i, /cfnetwork\/.+darwin/i], [[h, /_/g, "."], [p, "iOS"]], [/(mac os x) ?([\w\. ]*)/i, /(macintosh|mac_powerpc\b)(?!.+haiku)/i], [[p, "Mac OS"], [h, /_/g, "."]], [/droid ([\w\.]+)\b.+(android[- ]x86)/i], [h, p], [/(android|webos|qnx|bada|rim tablet os|maemo|meego|sailfish)[-\/ ]?([\w\.]*)/i, /(blackberry)\w*\/([\w\.]*)/i, /(tizen|kaios)[\/ ]([\w\.]+)/i, /\((series40);/i], [p, h], [/\(bb(10);/i], [h, [p, q]], [/(?:symbian ?os|symbos|s60(?=;)|series60)[-\/ ]?([\w\.]*)/i], [h, [p, "Symbian"]], [/mozilla\/[\d\.]+ \((?:mobile|tablet|tv|mobile; [\w ]+); rv:.+ gecko\/([\w\.]+)/i], [h, [p, A + " OS"]], [/web0s;.+rt(tv)/i, /\b(?:hp)?wos(?:browser)?\/([\w\.]+)/i], [h, [p, "webOS"]], [/crkey\/([\d\.]+)/i], [h, [p, N + "cast"]], [/(cros) [\w]+ ([\w\.]+\w)/i], [[p, "Chromium OS"], h], [/(nintendo|playstation) ([wids345portablevuch]+)/i, /(xbox); +xbox ([^\);]+)/i, /\b(joli|palm)\b ?(?:os)?\/?([\w\.]*)/i, /(mint)[\/\(\) ]?(\w*)/i, /(mageia|vectorlinux)[; ]/i, /([kxln]?ubuntu|debian|suse|opensuse|gentoo|arch(?= linux)|slackware|fedora|mandriva|centos|pclinuxos|red ?hat|zenwalk|linpus|raspbian|plan 9|minix|risc os|contiki|deepin|manjaro|elementary os|sabayon|linspire)(?: gnu\/linux)?(?: enterprise)?(?:[- ]linux)?(?:-gnu)?[-\/ ]?(?!chrom|package)([-\w\.]*)/i, /(hurd|linux) ?([\w\.]*)/i, /(gnu) ?([\w\.]*)/i, /\b([-frentopcghs]{0,5}bsd|dragonfly)[\/ ]?(?!amd|[ix346]{1,2}86)([\w\.]*)/i, /(haiku) (\w+)/i], [p, h], [/(sunos) ?([\w\.\d]*)/i], [[p, "Solaris"], h], [/((?:open)?solaris)[-\/ ]?([\w\.]*)/i, /(aix) ((\d)(?=\.|\)| )[\w\.])*/i, /\b(beos|os\/2|amigaos|morphos|openvms|fuchsia|hp-ux)/i, /(unix) ?([\w\.]*)/i], [p, h]]
+                }
+                , G = function (i, e) {
+                    if (typeof i == c && (e = i,
+                        i = d),
+                        !(this instanceof G))
+                        return (new G(i, e)).getResult();
+                    var o = i || (typeof r != b && r.navigator && r.navigator.userAgent ? r.navigator.userAgent : "")
+                        , a = e ? function (i, e) {
                             var o, a = {};
-                            for (o in i) e[o] && e[o].length % 2 == 0 ? a[o] = e[o].concat(i[o]) : a[o] = i[o];
+                            for (o in i)
+                                e[o] && e[o].length % 2 == 0 ? a[o] = e[o].concat(i[o]) : a[o] = i[o];
                             return a
                         }(F, e) : F;
-                    return this.getBrowser =
-                        function () {
-                            var i, e = {};
-                            return e[p] = d, e[h] = d, s.call(e, o, a.browser), e.major = typeof (i = e.version) == w ? i.replace(/[^\d\.]/g, "").split(".")[0] : d, e
-                        }, this.getCPU = function () {
+                    return this.getBrowser = function () {
+                        var i, e = {};
+                        return e[p] = d,
+                            e[h] = d,
+                            s.call(e, o, a.browser),
+                            e.major = typeof (i = e.version) == w ? i.replace(/[^\d\.]/g, "").split(".")[0] : d,
+                            e
+                    }
+                        ,
+                        this.getCPU = function () {
                             var i = {};
-                            return i[g] = d, s.call(i, o, a.cpu), i
-                        }, this.getDevice = function () {
+                            return i[g] = d,
+                                s.call(i, o, a.cpu),
+                                i
+                        }
+                        ,
+                        this.getDevice = function () {
                             var i = {};
-                            return i[f] = d, i[l] = d, i[m] = d, s.call(i, o, a.device), i
-                        }, this.getEngine = function () {
+                            return i[f] = d,
+                                i[l] = d,
+                                i[m] = d,
+                                s.call(i, o, a.device),
+                                i
+                        }
+                        ,
+                        this.getEngine = function () {
                             var i = {};
-                            return i[p] = d, i[h] = d, s.call(i, o, a.engine), i
-                        }, this.getOS = function () {
+                            return i[p] = d,
+                                i[h] = d,
+                                s.call(i, o, a.engine),
+                                i
+                        }
+                        ,
+                        this.getOS = function () {
                             var i = {};
-                            return i[p] = d, i[h] = d, s.call(i, o, a.os), i
-                        }, this.getResult = function () {
+                            return i[p] = d,
+                                i[h] = d,
+                                s.call(i, o, a.os),
+                                i
+                        }
+                        ,
+                        this.getResult = function () {
                             return {
                                 ua: this.getUA(),
                                 browser: this.getBrowser(),
@@ -1011,24 +499,43 @@
                                 device: this.getDevice(),
                                 cpu: this.getCPU()
                             }
-                        }, this.getUA = function () {
+                        }
+                        ,
+                        this.getUA = function () {
                             return o
-                        }, this.setUA = function (i) {
-                            return o = typeof i == w && 255 < i.length ? t(i, 255) : i, this
-                        }, this.setUA(o), this
+                        }
+                        ,
+                        this.setUA = function (i) {
+                            return o = typeof i == w && 255 < i.length ? t(i, 255) : i,
+                                this
+                        }
+                        ,
+                        this.setUA(o),
+                        this
                 };
-            G.VERSION = "0.7.31", G.BROWSER = i([p, h, "major"]), G.CPU = i([g]), G.DEVICE = i([l, f, m, o, a, x, v, k, y]), G.ENGINE = G.OS = i([p, h]), typeof exports != b ? (typeof module != b && module.exports && (exports = module.exports = G), exports.UAParser2 = G) : typeof define == u && define.amd ? define(function () {
-                return G
-            }) : typeof r != b && (r.UAParser2 =
-                G);
+            G.VERSION = "0.7.31",
+                G.BROWSER = i([p, h, "major"]),
+                G.CPU = i([g]),
+                G.DEVICE = i([l, f, m, o, a, x, v, k, y]),
+                G.ENGINE = G.OS = i([p, h]),
+                typeof exports != b ? (typeof module != b && module.exports && (exports = module.exports = G),
+                    exports.UAParser2 = G) : typeof define == u && define.amd ? define(function () {
+                        return G
+                    }) : typeof r != b && (r.UAParser2 = G);
             var L, Z = typeof r != b && (r.jQuery || r.Zepto);
-            Z && !Z.ua && (L = new G, Z.ua = L.getResult(), Z.ua.get = function () {
-                return L.getUA()
-            }, Z.ua.set = function (i) {
-                L.setUA(i);
-                var e, o = L.getResult();
-                for (e in o) Z.ua[e] = o[e]
-            })
+            Z && !Z.ua && (L = new G,
+                Z.ua = L.getResult(),
+                Z.ua.get = function () {
+                    return L.getUA()
+                }
+                ,
+                Z.ua.set = function (i) {
+                    L.setUA(i);
+                    var e, o = L.getResult();
+                    for (e in o)
+                        Z.ua[e] = o[e]
+                }
+            )
         }("object" == typeof window ? window : this);
         var goog = {
             require: function () { },
@@ -1056,13 +563,15 @@
         var UHT_UA_INFO = (new UAParser2).getResult();
         window.console = window.console || function () {
             var c = {};
-            c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function () { };
+            c.log = c.warn = c.debug = c.info = c.error = c.time = c.dir = c.profile = c.clear = c.exception = c.trace = c.assert = function () { }
+                ;
             return c
         }();
         UHTConsole.Message = function (type, args) {
             this.type = type;
             this.args = args
-        };
+        }
+            ;
         UHTConsole.allowToWrite = false;
         UHTConsole.methods = ["log", "info", "warn", "error"];
         UHTConsole.source = {};
@@ -1075,7 +584,8 @@
             return function () {
                 var stringARGS = [];
                 for (var i = 0; i < arguments.length; i++)
-                    if (arguments[i] != null) stringARGS.push(arguments[i].toString());
+                    if (arguments[i] != null)
+                        stringARGS.push(arguments[i].toString());
                 if (UHTConsole.redirectOutput) {
                     var args = [];
                     args.push(["g", UHT_CONFIG.SYMBOL].join("="));
@@ -1083,11 +593,13 @@
                     args.push(["d", (new Date).getTime()].join("="));
                     args.push([UHTConsole.methods[methodIdx], stringARGS.join(",")].join("="));
                     (new Image).src = "http://192.168.10.108:8000/console.php?" + args.join("&")
-                } else UHTConsole.messages.push(new UHTConsole.Message(UHTConsole.methods[methodIdx],
-                    stringARGS));
-                if (UHTConsole.messages.length > 512) UHTConsole.messages.splice(0, 128)
+                } else
+                    UHTConsole.messages.push(new UHTConsole.Message(UHTConsole.methods[methodIdx], stringARGS));
+                if (UHTConsole.messages.length > 512)
+                    UHTConsole.messages.splice(0, 128)
             }
-        };
+        }
+            ;
         UHTConsole.AllowToWrite = function (allowToWrite) {
             if (UHTConsole.redirectOutput) {
                 UHTConsole.wasAllowedToWrite = allowToWrite;
@@ -1095,38 +607,45 @@
             }
             for (var i = 0; i < UHTConsole.methods.length; ++i) {
                 var name = UHTConsole.methods[i];
-                if (UHTConsole.source[name] == null) UHTConsole.source[name] = console[name];
+                if (UHTConsole.source[name] == null)
+                    UHTConsole.source[name] = console[name];
                 if (!allowToWrite)
-                    if (UHTConsole.replacement[name] == null) UHTConsole.replacement[name] = UHTConsole.GetReplacement(i);
+                    if (UHTConsole.replacement[name] == null)
+                        UHTConsole.replacement[name] = UHTConsole.GetReplacement(i);
                 console[name] = allowToWrite ? UHTConsole.source[name] : UHTConsole.replacement[name]
             }
             if (allowToWrite && !UHTConsole.allowToWrite) {
-                for (var i =
-                    0; i < UHTConsole.messages.length; ++i) console[UHTConsole.messages[i].type](UHTConsole.messages[i].args[0]);
+                for (var i = 0; i < UHTConsole.messages.length; ++i)
+                    console[UHTConsole.messages[i].type](UHTConsole.messages[i].args[0]);
                 UHTConsole.messages = []
             }
             UHTConsole.allowToWrite = allowToWrite
-        };
+        }
+            ;
         UHTConsole.RedirectOutput = function (redirectOutput) {
-            if (UHTConsole.redirectOutput == Boolean(redirectOutput)) return;
+            if (UHTConsole.redirectOutput == Boolean(redirectOutput))
+                return;
             if (redirectOutput) {
-                if (UHTConsole.logFilename == null) UHTConsole.logFilename = UHTConsole.FormatDate(new Date);
+                if (UHTConsole.logFilename == null)
+                    UHTConsole.logFilename = UHTConsole.FormatDate(new Date);
                 UHTConsole.wasAllowedToWrite = UHTConsole.allowToWrite;
                 UHTConsole.AllowToWrite(false);
                 UHTConsole.redirectOutput = redirectOutput;
-                for (var i = 0; i < UHTConsole.messages.length; ++i) console[UHTConsole.messages[i].type](UHTConsole.messages[i].args[0]);
+                for (var i = 0; i < UHTConsole.messages.length; ++i)
+                    console[UHTConsole.messages[i].type](UHTConsole.messages[i].args[0]);
                 UHTConsole.messages = []
             } else {
-                UHTConsole.redirectOutput =
-                    redirectOutput;
+                UHTConsole.redirectOutput = redirectOutput;
                 UHTConsole.AllowToWrite(UHTConsole.wasAllowedToWrite)
             }
-        };
+        }
+            ;
         UHTConsole.FormatDate = function (d) {
             var date = d.toJSON().split("T")[0];
             var time = d.toTimeString().split(" ")[0].replace(/:/g, "-");
             return [date, time].join("_")
-        };
+        }
+            ;
         var Loader = {};
         Loader.WURFLProcessed = false;
         Loader.statisticsURL = null;
@@ -1134,23 +653,27 @@
         Loader.LoadScript = function (url, loadCallback, errorCallback) {
             var script = document.createElement("script");
             script.src = url;
-            if (loadCallback != undefined) script.onload = loadCallback;
+            if (loadCallback != undefined)
+                script.onload = loadCallback;
             if (errorCallback != undefined) {
                 script.onabort = errorCallback;
                 script.onerror = errorCallback
             }
             document.getElementsByTagName("HEAD")[0].appendChild(script);
             return script
-        };
+        }
+            ;
         Loader.LoadWURFL = function () {
-            // var wurflURL = location.protocol + "//device.pragmaticplay.net/wurfl.js";
-            var wurflURL = "http://localhost:5500/wurfl.js";
-            // if (location.hostname.indexOf("ppgames.net") != -1) wurflURL = location.protocol + "//device.ppgames.net/wurfl.js";
+            var wurflURL = location.protocol + "//localtest.me/wurfl.js";
+            if (location.hostname.indexOf("ppgames.net") != -1)
+                wurflURL = location.protocol + "//device.ppgames.net/wurfl.js";
             Loader.LoadScript(wurflURL, Loader.WURFLLoadHandler, Loader.WURFLErrorHandler);
             setTimeout(Loader.WURFLErrorHandler, 2E3)
-        };
+        }
+            ;
         Loader.WURFLLoadHandler = function () {
-            if (Loader.WURFLProcessed) return;
+            if (Loader.WURFLProcessed)
+                return;
             Loader.WURFLProcessed = true;
             var WURFL = window["WURFL"] || null;
             if (WURFL == null) {
@@ -1162,16 +685,19 @@
                     if (WURFL.complete_device_name.indexOf(LowEndDeviceIdentifiers[id]) >= 0) {
                         UHT_LOW_END_DEVICE = true;
                         break
-                    } console.log("WURFL loaded");
+                    }
+            console.log("WURFL loaded");
             UHT_DEVICE_TYPE = {
                 MOBILE: WURFL.is_mobile,
                 DESKTOP: !WURFL.is_mobile
             };
             Loader.SetExtraInfo();
             Loader.SendStatistics(JSON.stringify(WURFL))
-        };
+        }
+            ;
         Loader.WURFLErrorHandler = function () {
-            if (Loader.WURFLProcessed) return;
+            if (Loader.WURFLProcessed)
+                return;
             Loader.WURFLProcessed = true;
             console.log("WURFL not loaded use UAParser2");
             var device = UHT_UA_INFO.device;
@@ -1182,7 +708,8 @@
             };
             Loader.SetExtraInfo();
             Loader.SendStatistics(JSON.stringify({}))
-        };
+        }
+            ;
         Loader.SetExtraInfo = function () {
             var inFrame = false;
             try {
@@ -1198,12 +725,13 @@
                     if (device.indexOf(LowEndDeviceIdentifiers[id]) >= 0) {
                         UHT_LOW_END_DEVICE = true;
                         break
-                    } var classNames = [document.documentElement.className || "", os, device, String(UHT_UA_INFO.browser.name).replace(/\s/g, ""), UHT_CONFIG.MINI_MODE ? "MiniMode" : "StandardMode"];
-            classNames.push(inFrame ?
-                "InFrame" : "MainWindow");
+                    }
+            var classNames = [document.documentElement.className || "", os, device, String(UHT_UA_INFO.browser.name).replace(/\s/g, ""), UHT_CONFIG.MINI_MODE ? "MiniMode" : "StandardMode"];
+            classNames.push(inFrame ? "InFrame" : "MainWindow");
             document.documentElement.className = classNames.join(" ");
             document.documentElement.id = UHT_DEVICE_TYPE.MOBILE ? "Mobile" : "Desktop"
-        };
+        }
+            ;
         var PLATFORM_APPENDED = false;
         Loader.LoadGame = function () {
             if (!Loader.WURFLProcessed) {
@@ -1215,7 +743,7 @@
                 UHT_CONFIG.GAME_URL_ALTERNATIVE += (UHT_CONFIG.MINI_MODE ? "mini" : UHT_DEVICE_TYPE.MOBILE ? "mobile" : "desktop") + "/";
                 PLATFORM_APPENDED = true
             }
-            var script = Loader.LoadScript('http://localhost:5500/gs2c/common/games-html5/games/vs/vs40bigjuan/desktop/' + "bootstrap.js" + "?key=" + "d1e08", Loader.LoadGameCallback, function () {
+            var script = Loader.LoadScript(UHT_CONFIG.GAME_URL + "bootstrap.js" + "?key=" + "d1e08", Loader.LoadGameCallback, function () {
                 document.getElementsByTagName("HEAD")[0].removeChild(script);
                 currentDatapathRetries++;
                 if (currentDatapathRetries == retriesBeforeAlternativeDatapath) {
@@ -1224,47 +752,52 @@
                 }
                 setTimeout(Loader.LoadGame, 250)
             })
-        };
+        }
+            ;
         Loader.LoadGameCallback = function () {
             delete window.Loader;
             window.onload(null)
-        };
+        }
+            ;
         Loader.Listener = function (json) {
             console.info("Loader::Receive " + json);
             var params = JSON.parse(json);
             if (params["common"] == "EVT_GET_CONFIGURATION") {
                 delete window.sendToGame;
                 var args = params["args"];
-                if (typeof args["config"] == "string") args["config"] = JSON.parse(args["config"]);
+                if (typeof args["config"] == "string")
+                    args["config"] = JSON.parse(args["config"]);
                 UHT_CONFIG.GAME_URL = args["config"]["datapath"];
                 UHT_CONFIG.GAME_URL_ALTERNATIVE = args["config"]["datapath_alternative"];
-                if (UHT_CONFIG.GAME_URL_ALTERNATIVE == undefined) UHT_CONFIG.GAME_URL_ALTERNATIVE = args["config"]["datapath"];
-                UHT_CONFIG.STYLENAME =
-                    args["config"]["styleName"];
+                if (UHT_CONFIG.GAME_URL_ALTERNATIVE == undefined)
+                    UHT_CONFIG.GAME_URL_ALTERNATIVE = args["config"]["datapath"];
+                UHT_CONFIG.STYLENAME = args["config"]["styleName"];
                 UHT_CONFIG.LANGUAGE = args["config"]["lang"];
                 var tmp = UHT_CONFIG.GAME_URL.split("/");
                 var pathParts = [];
                 for (var i = 0; i < tmp.length; ++i)
-                    if (tmp[i].length > 0) pathParts.push(tmp[i]);
+                    if (tmp[i].length > 0)
+                        pathParts.push(tmp[i]);
                 var symbol = pathParts[pathParts.length - 1];
                 UHT_CONFIG.SYMBOL = symbol;
                 UHT_CONFIG.MINI_MODE = args["config"]["minimode"] == "1";
                 UHT_CONFIG.LOBBY_LAUNCHED = args["config"]["lobbyLaunched"] == true;
                 if (args["config"]["brandRequirements"] != null && args["config"]["brandRequirements"].indexOf("FORCEMOBILE") != -1) {
-                    UHT_DEVICE_TYPE.MOBILE =
-                        true;
+                    UHT_DEVICE_TYPE.MOBILE = true;
                     UHT_DEVICE_TYPE.DESKTOP = false;
                     UHT_CONFIG.MINI_MODE = false
                 }
                 var statURL = args["config"]["statisticsURL"];
                 if (statURL != undefined) {
                     Loader.statisticsURL = statURL + (/\?/.test(statURL) ? "&" : "?") + "mgckey=" + args["config"]["mgckey"];
-                    if (Loader.statistics != null) Loader.SendStatistics(Loader.statistics)
+                    if (Loader.statistics != null)
+                        Loader.SendStatistics(Loader.statistics)
                 }
                 Loader.LoadGame();
                 UHTLogotype.LoadLogoInfo(args["config"]["styleName"])
             }
-        };
+        }
+            ;
         var GA_timer_load_start = (new Date).getTime();
         Loader.Start = function () {
             UHTConsole.AllowToWrite(false);
@@ -1272,7 +805,8 @@
             try {
                 sendToAdapter = window.parent["sendToAdapter"] || null
             } catch (e) { }
-            if (sendToAdapter == null) sendToAdapter = window["sendToAdapter"] || null;
+            if (sendToAdapter == null)
+                sendToAdapter = window["sendToAdapter"] || null;
             var online = sendToAdapter != null;
             console.info("Loader::loaded - online = " + String(online));
             if (online) {
@@ -1281,8 +815,10 @@
                     common: "EVT_GET_CONFIGURATION",
                     type: "html5"
                 }))
-            } else Loader.LoadGame()
-        };
+            } else
+                Loader.LoadGame()
+        }
+            ;
         Loader.SendStatistics = function (params) {
             if (Loader.statisticsURL == null) {
                 Loader.statistics = params;
@@ -1292,9 +828,12 @@
             xhr.open("POST", Loader.statisticsURL + "&channel=" + (UHT_CONFIG.MINI_MODE ? "mini" : "") + (UHT_DEVICE_TYPE.MOBILE ? "mobile" : "desktop") + (UHT_CONFIG.LOBBY_LAUNCHED ? "_mini_lobby" : ""), true);
             xhr.setRequestHeader("Content-type", "application/json");
             xhr.send(params)
-        };
-        if (location.href.indexOf("WURFL_NOT_ALLOWED") > -1) Loader.WURFLErrorHandler();
-        else setTimeout(Loader.LoadWURFL, 0);
+        }
+            ;
+        if (location.href.indexOf("WURFL_NOT_ALLOWED") > -1)
+            Loader.WURFLErrorHandler();
+        else
+            setTimeout(Loader.LoadWURFL, 0);
         window.onload = Loader.Start;
         var UHTLogoIsVisible = true;
         var UHTLogotype = {};
@@ -1308,7 +847,8 @@
         UHTLogotype.gameLoadingStarted = false;
         UHTLogotype.hideLogoTimeout = null;
         UHTLogotype.LoadLogoInfo = function (name) {
-            if (UHT_CONFIG.GAME_URL.length == 0 || UHTLogotype == null) return;
+            if (UHT_CONFIG.GAME_URL.length == 0 || UHTLogotype == null)
+                return;
             var split = UHT_CONFIG.GAME_URL.split("/");
             split.splice(split.indexOf(UHT_CONFIG.SYMBOL) - 2);
             UHTLogotype.name = name;
@@ -1317,17 +857,19 @@
                 document.getElementsByTagName("HEAD")[0].removeChild(script);
                 currentDatapathRetries++;
                 if (currentDatapathRetries == retriesBeforeAlternativeDatapath) {
-                    UHT_CONFIG.GAME_URL =
-                        UHT_CONFIG.GAME_URL_ALTERNATIVE;
+                    UHT_CONFIG.GAME_URL = UHT_CONFIG.GAME_URL_ALTERNATIVE;
                     PLATFORM_APPENDED = false
                 }
                 setTimeout(UHTLogotype.LoadLogoInfo.bind(null, UHT_CONFIG.STYLENAME), 250)
             })
-        };
+        }
+            ;
         UHTLogotype.OnLogoInfoLoaded = function () {
-            if (UHTLogotype == null) return;
+            if (UHTLogotype == null)
+                return;
             var info = window["UHTLogotypeInfo"] || null;
-            if (info != null) UHTLogotype.data = info[UHTLogotype.name] || null;
+            if (info != null)
+                UHTLogotype.data = info[UHTLogotype.name] || null;
             if (UHTLogotype.data != null) {
                 UHTLogotype.logoImg = new Image;
                 UHTLogotype.logoImg.onload = UHTLogotype.OnLogoLoaded;
@@ -1336,7 +878,8 @@
                 UHTLogotype.UpdateStyle("logoOff", "logoOn");
                 UHTLogoIsVisible = false
             }
-        };
+        }
+            ;
         UHTLogotype.OnLogoLoaded = function () {
             var wheel = document.createElement("div");
             wheel.className = "logotype-wheel";
@@ -1351,12 +894,14 @@
             UHTLogotype.timer = (new Date).getTime();
             UHTLogoIsVisible = true;
             UHTLogotype.HandleResize();
-            window.addEventListener("resize",
-                UHTLogotype.HandleResize, false);
-            if (UHTLogotype.gameLoadingStarted) UHTLogotype.DelayHideLogo(UHTLogotype.duration)
-        };
+            window.addEventListener("resize", UHTLogotype.HandleResize, false);
+            if (UHTLogotype.gameLoadingStarted)
+                UHTLogotype.DelayHideLogo(UHTLogotype.duration)
+        }
+            ;
         UHTLogotype.HandleResize = function () {
-            if (UHTLogotype.data == null) return;
+            if (UHTLogotype.data == null)
+                return;
             var w = UHTLogotype.logoImg.width;
             var h = UHTLogotype.logoImg.height;
             var sw = "auto";
@@ -1364,12 +909,17 @@
             var r1 = window.innerWidth / window.innerHeight;
             var r2 = w / h;
             if (UHTLogotype.data["fit"] == "shrink")
-                if (r2 < r1) sh = "100%";
-                else sw = "100%";
-            else if (r2 < r1) sw = "100%";
-            else sh = "100%";
+                if (r2 < r1)
+                    sh = "100%";
+                else
+                    sw = "100%";
+            else if (r2 < r1)
+                sw = "100%";
+            else
+                sh = "100%";
             UHTLogotype.logoEl.style.backgroundSize = [sw, sh].join(" ")
-        };
+        }
+            ;
         UHTLogotype.GameLoadingStarted = function () {
             UHTLogotype.gameLoadingStarted = true;
             if (UHTLogotype.data == null) {
@@ -1378,14 +928,19 @@
             }
             if (UHTLogotype.timer > 0) {
                 var dt = UHTLogotype.duration - ((new Date).getTime() - UHTLogotype.timer);
-                if (dt <= 0) UHTLogotype.HideLogo();
-                else UHTLogotype.DelayHideLogo(dt)
+                if (dt <= 0)
+                    UHTLogotype.HideLogo();
+                else
+                    UHTLogotype.DelayHideLogo(dt)
             }
-        };
+        }
+            ;
         UHTLogotype.DelayHideLogo = function (delay) {
-            if (UHTLogotype.hideLogoTimeout != null) clearTimeout(UHTLogotype.hideLogoTimeout);
+            if (UHTLogotype.hideLogoTimeout != null)
+                clearTimeout(UHTLogotype.hideLogoTimeout);
             UHTLogotype.hideLogoTimeout = setTimeout(UHTLogotype.HideLogo, delay)
-        };
+        }
+            ;
         UHTLogotype.HideLogo = function () {
             if (UHTLogotype.logoEl != null) {
                 document.body.removeChild(UHTLogotype.logoEl);
@@ -1394,28 +949,31 @@
             UHTLogotype.UpdateStyle("logoOff", "logoOn");
             UHTLogotype = null;
             UHTLogoIsVisible = false
-        };
+        }
+            ;
         UHTLogotype.UpdateStyle = function (add, remove) {
             var split = (document.documentElement.className || "").split(" ");
             var cls = [];
             for (var i = 0; i < split.length; ++i)
-                if (split[i].length > 0 && split[i] != remove) cls.push(split[i]);
+                if (split[i].length > 0 && split[i] != remove)
+                    cls.push(split[i]);
             cls.push(add);
             document.documentElement.className = cls.join(" ")
-        };
+        }
+            ;
         UHT_ALL = true;
     </script>
     <script type="text/javascript"
-        src="https://common-static.pragmaticplay.net/gs2c/common/js/html5-script-external.js"></script>
+        src="https://common-static-aka.ppslot001.net/gs2c/common/js/html5-script-external.js"></script>
     <script type="text/javascript">
         Html5GameManager.init({
             contextPath: "/gs2c",
-            cashierUrl: "https://stake.com/deposit",
-            lobbyUrl: "https://stake.com/casino/home",
+            cashierUrl: "",
+            lobbyUrl: "https://www.pragmaticplay.com",
             mobileCashierUrl: "",
             mobileLobbyUrl: "",
-            gameConfig: '{"lobbyLaunched":false,"miniLobby":true,"jurisdiction":"99","openHistoryInWindow":false,"RELOAD_JACKPOT":"/gs2c/jackpot/reload.do","styleName":"rare_stake","SETTINGS":"/gs2c/saveSettings.do","openHistoryInTab":false,"replaySystemUrl":"https://replay.pragmaticplay.net","multiProductMiniLobby":false,"ingameLobbyApiURL":"https://rarenew-dk4.pragmaticplay.net/gs2c/minilobby/games","integrationType":"HTTP","environmentId":"130","historyType":"internal","vendor":"T","currency":"USD","lang":"en","datapath":"https://common-static.pragmaticplay.net/gs2c/common/games-html5/games/vs/vs40bigjuan/","amountType":"COIN","LOGOUT":"/gs2c/logout.do","REGULATION":"https://rarenew-dk4.pragmaticplay.net/gs2c/regulation/process.do?symbol\u003dvs40bigjuan","datapath_alternative":"https://rarenew-dk4.pragmaticplay.net/gs2c/common/games-html5/games/vs/vs40bigjuan/","replaySystemContextPath":"/ReplayService","sessionKey":["GDUGt/+5VeBMlgpQ+kyVdlhmCYoF3tJvPtuyLvX6uiOl+/TeN2qsoXWIhpAXYoqxFP5ymgvCEQ6KVaMayGrXZA\u003d\u003d","YFYKsUUc2HhI9jfOeYburQ\u003d\u003d","Jqw3mSr++bG0+Lujid2rOWNDMn2y0Qq4jU053zlrRGgrWdFK7W74fFK6m772Nv3rBTLGxa53OdRd7XS2JjufHz/8+x2bPiPpWYR3ZYixiJ5HH0bvYjN7NsKRA+8z9D9fynpXO740aCre7nXu8+7d4DZW5TejG+wB8EmcStRWkSMTKsEB+8iM2nuJo86OAetaSpOnWqvf3LWIPj1/dPfWwYz2dM1OtAAhi/CeQSbP22jOPWkErvqLkA68zVbl3HcWjmu5/eU9uvpdRQsgEFGWKupC3oawdQV51f2dRDi5YSdW1nEhol6HiO5wTiyZnc/dvyXfFKk5Fo0Vq8vYFddPAIErytUHeipER9miLXkz/ZC8gmxJtSuHxHN3SUyNna/YF+gHHYWgtG0Soxpj1fp9WiK31+Gs0hLIXElfHcwpwnQ\u003d"],"showRealCash":"1","statisticsURL":"https://rarenew-dk4.pragmaticplay.net/gs2c/stats.do","accountType":"R","clock":"0","mgckey":"AUTHTOKEN@8cfcdc95a2d9be289ea9f5e278eb7bc736bd0dac98fe52d51f607330add8718a~stylename@rare_stake~SESSION@42c42073-4359-46fd-8cfa-cd1e6c519aad~SN@43151177","gameService":"https://rarenew-dk4.pragmaticplay.net/gs2c/ge/v3/gameService","RELOAD_BALANCE":"/gs2c/reloadBalance.do","currencyOriginal":"USD","extend_events":"1","sessionTimeout":"30","CLOSE_GAME":"/gs2c/closeGame.do?symbol\u003dvs40bigjuan","region":"Other","HISTORY":"https://rarenew-dk4.pragmaticplay.net/gs2c/lastGameHistory.do?symbol\u003dvs40bigjuan\u0026mgckey\u003dAUTHTOKEN@8cfcdc95a2d9be289ea9f5e278eb7bc736bd0dac98fe52d51f607330add8718a~stylename@rare_stake~SESSION@42c42073-4359-46fd-8cfa-cd1e6c519aad~SN@43151177"}',
-            mgckey: "AUTHTOKEN@8cfcdc95a2d9be289ea9f5e278eb7bc736bd0dac98fe52d51f607330add8718a~stylename@rare_stake~SESSION@42c42073-4359-46fd-8cfa-cd1e6c519aad~SN@43151177",
+            gameConfig: '{"lobbyLaunched":false,"miniLobby":true,"jurisdiction":"99","openHistoryInWindow":false,"RELOAD_JACKPOT":"/gs2c/jackpot/reload.do","styleName":"dj_nanosoft3","SETTINGS":"/gs2c/saveSettings.do","openHistoryInTab":false,"replaySystemUrl":"https://replay-as1.pragmaticplay.net","multiProductMiniLobby":false,"ingameLobbyApiURL":"https://dj-sg13.ppgames.net/gs2c/minilobby/games","integrationType":"HTTP","environmentId":"138","historyType":"internal","vendor":"T","currency":"KRW","lang":"ko","datapath":"https://common-static-aka.ppslot001.net/gs2c/common/games-html5/games/vs/vs243lionsgold/","amountType":"COIN","LOGOUT":"/gs2c/logout.do","REGULATION":"https://dj-sg13.ppgames.net/gs2c/regulation/process.do?symbol\u003dvs243lionsgold","datapath_alternative":"https://dj-sg13.ppgames.net/gs2c/common/games-html5/games/vs/vs243lionsgold/","replaySystemContextPath":"/ReplayService","sessionKey":["RLM8GkqEVz6tdy3j8ewQpCSDIFowBOLw7ed1X9PgTQu2m/wNyFVaGEaDdVdzxI6FRNqBTqhpaZkfFUZgK1AZkQ\u003d\u003d","jXX1ViguSgczeEqR/vGp5A\u003d\u003d","JqL8rQzJyYZjEXSA6p1vPyAKKhnpl0BUnKEQt3od0iYbuzE6EIRmxjIlc6PWzVWaGVUaCeYBxhqxH9o3WBOk3Uyrbn2xjU9uafZckI36eNCqR4xHMcphNEVL3hZktKyiUA7iYklytE92ekeMuHkFvPvf/TyxetStWHPFUOw3EuoNxOafu88TbRFYMcRQF8cmXFg/cYQeaiohwuAq/m9rvq5nW4mOalPzPIEk2GU2NaUnLAOdxPSdZfih1ywwUtFt/tWIVTkYVM0T5iB00GHVwunuBPjaTA6+3TwLq7Equ5o\u003d"],"showRealCash":"1","statisticsURL":"https://dj-sg13.ppgames.net/gs2c/stats.do","accountType":"R","clock":"0","mgckey":"AUTHTOKEN@d4fa1d09cc150bb25ab0c8bb0224188b24f61d9e540b265d0b83eda101d772b3~stylename@dj_nanosoft3~SESSION@592af1b5-fb29-4110-87bc-2fa86a9d0555~SN@26f26dc0&tabName=","gameService":"https://dj-sg13.ppgames.net/gs2c/ge/v3/gameService","gameVerificationURL":"https://dj-sg13.ppgames.net/gs2c/session/verify","RELOAD_BALANCE":"/gs2c/reloadBalance.do","currencyOriginal":"KRW","extend_events":"1","sessionTimeout":"30","CLOSE_GAME":"/gs2c/closeGame.do?symbol\u003dvs243lionsgold","region":"Asia","HISTORY":"https://dj-sg13.ppgames.net/gs2c/lastGameHistory.do?symbol\u003dvs243lionsgold\u0026mgckey\u003dAUTHTOKEN@95b8728bf6e79431850b829d36f4d7525f0f3bbbab449176400614d1c24aff7b~stylename@dj_nanosoft3~SESSION@434c4df9-62f6-448d-b1bb-100a8f79045b~SN@94e23650"}',
+            mgckey: "AUTHTOKEN@d4fa1d09cc150bb25ab0c8bb0224188b24f61d9e540b265d0b83eda101d772b3~stylename@dj_nanosoft3~SESSION@592af1b5-fb29-4110-87bc-2fa86a9d0555~SN@26f26dc0&tabName=",
             jurisdictionMsg: "",
             extendSessionUrl: "",
             extendSessionInterval: null
@@ -1429,7 +987,6 @@
         <div class="message-title" style="color: #fff;">You are using an unsupported browser.</div>
         <div class="message-text" style="color: #fff;">Please use Google Chrome.</div>
     </div>
-
     <div id="wheelofpatience"></div>
     <div class="scale-holder" id="PauseRoot">
         <div class="scale-root" id="ScaleRoot">
@@ -1460,9 +1017,14 @@
                 }));
             if (!noga) {
                 (function (i, s, o, g, r, a, m) {
-                    i['GoogleAnalyticsObject'] = r; i[r] = function () {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = function () {
                         (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date(); a = s.createElement(o), a.async = 1;
+                    }
+                        ,
+                        i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                        a.async = 1;
                     a.onload = function () {
                         var queue = [];
                         while (gaQueue.length > 0) {
@@ -1476,28 +1038,45 @@
                         }
                         gaQueue = queue;
                         setTimeout(sendGAQueued, 1);
-                    };
-                    a.onerror = a.onabort = function () { ga = function () { }; gaQueue = null };
-                    a.src = g; s.body.appendChild(a);
-                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+                    }
+                        ;
+                    a.onerror = a.onabort = function () {
+                        ga = function () { }
+                            ;
+                        gaQueue = null
+                    }
+                        ;
+                    a.src = g;
+                    s.body.appendChild(a);
+                }
+                )(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
                 (function (i, s, o, g, r, a, m) {
                     i[r] = function () {
-                        (
-                            window.dataLayer = window.dataLayer || []).push(arguments)
-                    },
+                        (window.dataLayer = window.dataLayer || []).push(arguments)
+                    }
+                        ,
                         i[r]('js', new Date());
-                    a = s.createElement(o), a.async = 1;
+                    a = s.createElement(o),
+                        a.async = 1;
                     a.onload = function () {
                         while (ga4Queue.length > 0) {
                             var item = ga4Queue.shift();
                             if (item.length > 0)
                                 gtag.apply(i, item);
                         }
-                    };
-                    a.onerror = a.onabort = function () { gtag = function () { }; ga4Queue = null };
-                    a.src = g; s.body.appendChild(a);
-                })(window, document, 'script', 'https://www.googletagmanager.com/gtag/js?id=G-18F57V2EP0', 'gtag');
+                    }
+                        ;
+                    a.onerror = a.onabort = function () {
+                        gtag = function () { }
+                            ;
+                        ga4Queue = null
+                    }
+                        ;
+                    a.src = g;
+                    s.body.appendChild(a);
+                }
+                )(window, document, 'script', 'https://www.googletagmanager.com/gtag/js?id=G-18F57V2EP0', 'gtag');
             }
         }, 1);
     </script>
